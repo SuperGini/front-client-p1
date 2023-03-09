@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+in the case of the font the -> font-weight: 100;300...700 is the one that makes the difference between the fonts
+otherwise if we have the same -> font-weight the last font declared will apply
+https://www.youtube.com/watch?v=KzqQXDbDvus
+*/
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto-Thin.ttf) format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(assets/fonts/Roboto-Bold.ttf) format("truetype");
+  /*or bold*/
+  font-weight: 700;
+  font-style: normal;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+}
+
+
