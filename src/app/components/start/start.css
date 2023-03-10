@@ -1,0 +1,71 @@
+.start-container {
+  background: url("/assets/pictures/start-image.png") no-repeat center center/cover;
+  width: 100vw;
+  height: 100vh;
+
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.navbar {
+
+}
+
+.nav-item{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.start-link{
+  font-size: 3rem;
+  padding: 1rem 0;
+  margin-right: 5rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  color:  var(--white-color);
+  transition: 0.2s all;
+  position: relative;
+}
+
+.start-link:hover::after{
+  content: '';
+  position: absolute;
+  top: 6rem;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  border-bottom: 0.3rem solid var(--yellow-color);
+  animation: grow 0.2s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes grow {
+  100% {
+    width: 100%;
+  }
+}
+
+a:hover{
+  cursor: pointer;
+  color: var(--yellow-color) ;
+}
+
+.start-footer{
+  align-self: flex-end;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.x{
+  width: 20rem;
+  height: 20rem;
+}
+
+
+
+
+
