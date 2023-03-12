@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="central-container">
+    <div class="left-container">
+      <h3>Ginitoru<span>&trade;</span></h3>
+    </div>
+    <div class="right-container">
+      <div class="login">
+        <p>Don't have an account?</p>
+        <button class="login-button">Create account</button>
+      </div>
+      <div class="text">
+        <h4>SuperginiPictureApp</h4>
+      </div>
+      <form class="form-container" [formGroup]="loginForm">
+        <div class="input-field">
+
+          <input type="text" required formControlName="username">
+          <label class="floating-label">username</label>
+        </div>
+        <div class="input-field">
+          <input type="password" required formControlName="password">
+          <label class="floating-label">password</label>
+        </div>
+        <button type="submit" (click)="onSubmit()">Login</button>
+      </form>
+
+    </div>
+    <app-footer></app-footer>
+  </div>
+
+</div>
+
+

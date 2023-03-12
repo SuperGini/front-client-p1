@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {User} from "../../model/user";
 import {FooterComponent} from "../footer/footer.component";
 
 @Component({
@@ -13,7 +12,7 @@ import {FooterComponent} from "../footer/footer.component";
   ],
   standalone: true
 })
-export class CreateUserComponent implements OnInit{
+export class CreateUserComponent implements OnInit {
 
   public signupForm: FormGroup;
 
@@ -25,7 +24,7 @@ export class CreateUserComponent implements OnInit{
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.signupForm.value.username + 'xxxx')
     this.signupForm.value.username;
 

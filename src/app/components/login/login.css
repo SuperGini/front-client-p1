@@ -1,0 +1,169 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #f7f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+app-footer {
+  grid-column: 1 /span 3;
+}
+
+.central-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  max-width: 60rem;
+  width: 100%;
+
+
+  background: var(--white-color);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.left-container {
+  position: relative;
+  background: #1c2833;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h3 {
+  transform: rotate(270deg);
+  text-align: center;
+  color: var(--white-color);
+  font-size: 2rem;
+}
+
+span {
+  color: var(--orange-color);
+  font-size: 2.5rem;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.login {
+  display: flex;
+  align-self: flex-end;
+  margin: 1rem 1rem 0 0;
+}
+
+.login p {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  align-self: center;
+}
+
+.login-button {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--dark-gray-color);
+  border-radius: 0.3rem;
+  font-weight: bold;
+  color: var(--dark-gray-color);
+  background: var(--white-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.login-button:hover {
+  cursor: pointer;
+  color: var(--white-color);
+  background: var(--dark-gray-color);
+}
+
+.text{
+  margin-top: 2rem;
+}
+
+.text h4 {
+  color: var(--dark-gray-color);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+label, input {
+  display: inline-block;
+}
+
+.input-field {
+  position: relative;
+  width: 30rem;
+}
+
+.input-field input {
+  max-width: 30rem;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 2rem;
+  border-radius: 0.3rem;
+  outline: none;
+  border: 2px solid var(--white-gray-color);
+}
+
+.floating-label {
+  color: rgb(47, 46, 46, 0.7);
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  pointer-events: none;
+  transition: 0.3s;
+  font-size: 1.4rem;
+}
+
+input:focus ~ label,
+  /*dont forget to add to the input field the -> required validator*/
+input:valid ~ label {
+  top: -10px;
+  left: 15px;
+  font-size: 1.4rem;
+  background-color: var(--white-color);
+  padding: 0 10px 0 10px;
+  color: var(--dark-gray-color);
+}
+
+.form-container button {
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  max-width: 30rem;
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+  color: #fbfcfc;
+  background:  #17202a ;
+  border: 4px solid var(--black-color);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-container button:hover {
+  cursor: pointer;
+  border: 4px solid var(--black-color);
+  color: var(--green-color);
+}
+
+app-footer {
+  align-self: stretch;
+  background: #1c2833;
+
+}
