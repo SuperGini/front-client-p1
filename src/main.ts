@@ -5,6 +5,7 @@ import {importProvidersFrom} from "@angular/core";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 /**
  * since I'm using standalone components all the services need to be declared here so the can be used

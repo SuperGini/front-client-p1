@@ -1,17 +1,24 @@
 import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {FooterComponent} from "../footer/footer.component";
+import {Router} from "@angular/router";
+import {Navigating} from "../interfaces";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login2',
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
-  imports: [ReactiveFormsModule, FooterComponent],
+  imports: [
+    ReactiveFormsModule
+  ],
   standalone: true
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, Navigating{
 
   loginForm: FormGroup;
+
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -20,10 +27,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    console.log(this.loginForm.value.username + 'xxxx');
-    this.loginForm.value.username;
+  toCreateAccountPage(): void {
+    this.router.navigate(['/create']);
   }
 
+  onSubmit(){
 
+  }
 }

@@ -77,3 +77,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/**
+FUUUUUUKKKKKKKKK -> i need this shit so CSS grid doesn't consider router-outlet as a HTML tag
+https://stackoverflow.com/questions/54868967/how-to-get-angulars-router-outlet-to-work-with-css-grid
+*/
+router-outlet{
+  display: none;
+}
