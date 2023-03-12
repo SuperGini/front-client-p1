@@ -1,26 +1,34 @@
 <div class="start-container">
   <div class="navbar">
-    <ul>
-      <li class="nav-item">
+    <ul class="nav-item">
+      <li>
         <a class="start-link">Login</a>
+      </li>
+      <li>
         <a class="start-link">Create user</a>
       </li>
     </ul>
   </div>
   <div class="start-footer">
-    <h4>Gini</h4>
-    <div class="icons">
-      <p>icon1</p>
-      <p>icon2</p>
-      <p>icon3</p>
-      <mat-icon svgIcon="springboot" style="color: greenyellow" class="x"></mat-icon>
-      <mat-icon svgIcon="spring" style="color: greenyellow" class="x"></mat-icon>
-      <mat-icon svgIcon="angular" style="color: red" class="x v"></mat-icon>
-      <mat-icon svgIcon="html5" style="color: orange" class="x"></mat-icon>
-      <mat-icon svgIcon="css3" style="color: blue" class="x"></mat-icon>
-      <mat-icon svgIcon="mysql" style="color: cadetblue" class="x y"></mat-icon>
+    <div class="empty-space"></div>
+    <div class="gini">
+      <h4>Ginitoru <span class="trade">&trade;</span></h4>
+      <div (click)="redirect($event)">
+        <mat-icon svgIcon="linkedin" class="linkedin"></mat-icon>
+        <mat-icon svgIcon="github" class="github"></mat-icon>
+      </div>
+    </div>
 
-      <p>icon3</p>
+    <div class="icons" (click)="redirect($event)">
+      <div class="text">
+        <p>powered by</p>
+      </div>
+      <mat-icon svgIcon="springboot" class="springboot"></mat-icon>
+      <mat-icon svgIcon="spring" class="spring"></mat-icon>
+      <mat-icon svgIcon="angular" class="angular"></mat-icon>
+      <mat-icon svgIcon="html5" class="html5"></mat-icon>
+      <mat-icon svgIcon="css3" class="css3"></mat-icon>
+      <mat-icon svgIcon="mysql" class="mysql"></mat-icon>
     </div>
   </div>
 </div>

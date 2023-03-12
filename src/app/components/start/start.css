@@ -1,42 +1,52 @@
+
 .start-container {
   background: url("/assets/pictures/start-image.png") no-repeat center center/cover;
   width: 100vw;
   height: 100vh;
 
-
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.navbar {
-
+.start-container:before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.nav-item{
+.navbar {
+  z-index: 2;
+}
+
+.nav-item {
   display: flex;
   justify-content: flex-end;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+
 }
 
-.start-link{
-  font-size: 3rem;
-  padding: 1rem 0;
-  margin-right: 5rem;
-  margin-top: 2rem;
+.start-link {
+  font-size: 2rem;
+  margin-right: 3rem;
   font-weight: bold;
-  color:  var(--white-color);
+  color: var(--white-color);
   transition: 0.2s all;
   position: relative;
 }
 
-.start-link:hover::after{
+.start-link:hover::after {
   content: '';
   position: absolute;
-  top: 6rem;
+  top: 3rem;
   left: 0;
   height: 0;
   width: 0;
   z-index: 1;
-  border-bottom: 0.3rem solid var(--yellow-color);
+  border-bottom: 0.2rem solid var(--white-color);
   animation: grow 0.2s linear;
   animation-fill-mode: forwards;
 }
@@ -47,22 +57,92 @@
   }
 }
 
-a:hover{
+a:hover {
   cursor: pointer;
-  color: var(--yellow-color) ;
 }
 
-.start-footer{
+.start-footer {
   align-self: flex-end;
+  display: flex;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
 
+}
+
+
+.start-footer {
+  color: var(--white-color);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.gini span {
+  font-size: 2rem;
+}
+
+.gini .linkedin {
+  color: var(--blue-color);
+}
+
+.gini h4 span {
+  color: var(--orange-color);
+}
+
+.icons {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 5rem;
 }
 
-.x{
-  width: 20rem;
-  height: 20rem;
+h4 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.text {
+  padding: 0 1rem;
+  font-size: 1.6rem;
+}
+
+mat-icon {
+  margin: 0.2rem;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+}
+
+.icons .springboot {
+  color: var(--green-color);
+}
+
+.icons .spring {
+  color: var(--green-color);
+}
+
+.icons .angular {
+  color: var(--red-color);
+}
+
+.icons .html5 {
+  color: var(--orange-color);
+}
+
+.icons .css3 {
+  color: var(--blue-dark-color);
+}
+
+.icons .mysql {
+  color: var(--blue-color);
 }
 
 
