@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FooterComponent} from "../footer/footer.component";
-import {Router, RouterModule, RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {Navigating} from "../interfaces";
 import {CreateUserComponent} from "../createuser/create-user.component";
 import {LoginComponent} from "../login/login.component";
@@ -41,7 +41,7 @@ export class UserCredentialContainerComponent implements OnInit, Navigating {
     this.signupForm.value.username;
   }
 
-  toLoginPage(): void{
+  toLoginPage(): void {
     this.router.navigate(['/login']);
   }
 

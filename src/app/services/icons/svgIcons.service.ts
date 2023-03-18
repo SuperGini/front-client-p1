@@ -8,7 +8,7 @@ import {DomSanitizer} from "@angular/platform-browser";
  * and manipulate them using css
  */
 @Injectable({providedIn: 'root'})
-export class IconsService {
+export class SvgIconsService {
 
   private iconsName: string [] = [
     Icons.SPRINGBOOT,

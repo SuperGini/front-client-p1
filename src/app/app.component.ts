@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StartComponent} from "./components/start/start.component";
 import {RouterOutlet} from "@angular/router";
+import {FontAwesomeIconService} from "./services/icons/fontAwesomeIcon.service";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,13 @@ import {RouterOutlet} from "@angular/router";
   ],
   standalone: true
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  constructor(private fontAwesomeIcons: FontAwesomeIconService) {
+
+  }
+
+  ngOnInit(): void {
+    this.fontAwesomeIcons.loadIcons();
+  }
 }

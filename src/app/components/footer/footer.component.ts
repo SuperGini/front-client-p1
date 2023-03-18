@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Icons, IconsService} from "../../services/icons/icons.service";
+import {Icons, SvgIconsService} from "../../services/icons/svgIcons.service";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -12,7 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
 })
 export class FooterComponent{
 
-  constructor(private iconService: IconsService) {
+  constructor(private iconService: SvgIconsService) {
     this.iconService.loadIcons();
   }
 

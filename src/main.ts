@@ -5,7 +5,8 @@ import {importProvidersFrom} from "@angular/core";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {AppModule} from "./app/app.module";
 
 /**
  * since I'm using standalone components all the services need to be declared here so the can be used
@@ -14,8 +15,16 @@ import {RouterModule} from "@angular/router";
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(AppRoutingModule, BrowserAnimationsModule, MatIconModule, HttpClientModule, BrowserModule), //very important this line -> it enables routing with standalone components
+    //import all the module globally here so I don't have to declare them in component every time
+    importProvidersFrom(  //very important this line -> it enables routing with standalone components
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MatIconModule,
+      HttpClientModule,
+      BrowserModule,
+      AppModule,
+      FontAwesomeModule), // -> https://www.npmjs.com/package/@fortawesome/angular-fontawesome -> install and shit
     //declare here all the services that we use in the app so we cal use them globally -> Singleton and shit
-    MatIconRegistry
+    MatIconRegistry,
   ]
 });
