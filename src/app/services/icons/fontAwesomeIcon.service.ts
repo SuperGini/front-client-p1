@@ -6,7 +6,17 @@ import {
   faUser,
   faFolder,
   faFolderPlus,
-  faMagnifyingGlass, faFilePdf, faImage, faFilm, faSdCard, faEllipsis, faArrowDown, faFile, faCirclePlay, faFileLines
+  faMagnifyingGlass,
+  faFilePdf,
+  faImage,
+  faFilm,
+  faSdCard,
+  faEllipsis,
+  faArrowDown,
+  faFile,
+  faCirclePlay,
+  faFileLines,
+  faAngleLeft, faAngleRight
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -32,7 +42,9 @@ export class FontAwesomeIconService {
       faArrowDown,
       faFile,
       faCirclePlay,
-      faFileLines
+      faFileLines,
+      faAngleLeft,
+      faAngleRight
     );
   }
 }

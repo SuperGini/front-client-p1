@@ -1,3 +1,101 @@
 .center-container{
   background: #ebedf8;
+  display: grid;
+  grid-template-rows: 1fr  auto auto 1fr;
+
+
 }
+
+.search-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 2rem 2rem;
+}
+
+.search-bar fa-icon {
+  font-size: 1.6rem;
+  color:  #7f8c8d ;
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translate(-50%, -50%);
+
+}
+
+.search-bar input {
+  max-width: 100%;
+  width: 100%;
+  height: 3rem;
+  padding: 1.7rem 3.5rem;
+  color: var(--dark-gray-color);
+  outline: none;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 1.4rem;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+}
+
+::placeholder{
+  color: #7f8c8d ;
+}
+
+.recently-used h4{
+  font-size: 2rem;
+  margin: 1rem 2rem;
+  color: var(--dark-gray-color);
+}
+
+.recent-folders{
+  display: flex;
+  margin: 3rem 2rem 0 2rem;
+  gap: 2rem;
+
+
+}
+
+.project-1{
+  width: 20rem;
+  height: 15rem;
+  background: var(--white-color);
+  border-radius: 1.5rem;
+}
+
+.project-1 .wrapper {
+  padding: 2rem 2rem;
+}
+
+.project-1 .wrapper fa-icon{
+  font-size: 2.3rem;
+  color: #f39c12;
+}
+
+.project-name{
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark-gray-color);
+}
+
+.author{
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #808b96;
+}
+
+.created{
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #808b96;
+}
+
+
+
+
+
+
