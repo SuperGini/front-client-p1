@@ -16,7 +16,7 @@ import {
   faFile,
   faCirclePlay,
   faFileLines,
-  faAngleLeft, faAngleRight
+  faAngleLeft, faAngleRight, faGear, faCloudArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -44,7 +44,9 @@ export class FontAwesomeIconService {
       faCirclePlay,
       faFileLines,
       faAngleLeft,
-      faAngleRight
+      faAngleRight,
+      faGear,
+      faCloudArrowDown
     );
   }
 }
