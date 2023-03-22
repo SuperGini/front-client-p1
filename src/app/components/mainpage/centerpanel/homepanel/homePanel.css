@@ -1,8 +1,4 @@
-.center-container {
-  background: #ebedf8;
-  /*display: grid;*/
-  /*grid-template-rows: auto  auto auto auto;*/
-  max-height: 90rem;
+.wrapper-panel{
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -10,7 +6,6 @@
 
 .search-bar {
   display: flex;
-  /*align-items: center;*/
   justify-content: center;
   position: relative;
   margin: 2rem 2rem;
@@ -54,8 +49,6 @@
   display: flex;
   margin: 3rem 2rem 0 2rem;
   gap: 2rem;
-
-
 }
 
 .project-1 {
@@ -130,12 +123,9 @@ ul {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-
 }
 
-
-
-.table-body .table-body-row .wrapper {
+.table-body .table-body-row {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
 
@@ -196,21 +186,6 @@ ul {
   margin-bottom: 1rem;
 }
 
-.btn-dont-know{
-  display: flex;
-  justify-content: flex-end;
-  border-top: 1px solid var(--white-gray-color);
-}
-
-.btn-dont-know button {
-  padding: 0.8rem 4rem;
-  margin: 2rem 2rem;
-  border-radius: 0.5rem;
-  border: 2px solid var(--red-color);
-  background: var(--white-color);
-  font-weight: 700;
-  color: var(--dark-gray-color);
-}
 
 
 

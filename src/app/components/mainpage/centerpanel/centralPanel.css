@@ -1,0 +1,11 @@
+.center-container {
+  background: #ebedf8;
+  max-height: 90rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+app-home-panel{
+  height: 100%;
+}

@@ -1,0 +1,15 @@
+.btn-dont-know{
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--white-gray-color);
+}
+
+.btn-dont-know button {
+  padding: 0.8rem 4rem;
+  margin: 2rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--red-color);
+  background: var(--white-color);
+  font-weight: 700;
+  color: var(--dark-gray-color);
+}
