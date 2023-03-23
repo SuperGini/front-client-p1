@@ -1,0 +1,42 @@
+.pictures-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.pictures-wrapper{
+  height: 100%;
+  padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(3 ,1fr);
+  gap: 0.5rem;
+  justify-content: center;
+  align-self: center;
+
+  flex-wrap: wrap;
+}
+
+.picture-1{
+  width: 7rem;
+  height: 7rem;
+  background: red;
+  align-self: center;
+  justify-self: center;
+}
+
+.page-number {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--dark-gray-color);
+  margin-bottom: 1rem;
+}
+
+
+
+

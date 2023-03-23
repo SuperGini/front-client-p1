@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 1rem;
 }
 
 .user-container{
@@ -44,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   color: var(--dark-gray-color);
-  height: 100%;
+  /*height: 100%;*/
 }
 
 .folder-info-container h4:nth-child(1) {
@@ -96,7 +97,7 @@
   flex-direction: column;
   max-width: 25rem;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   margin-top: 1.5rem;
 }
 
@@ -146,16 +147,23 @@
   border-radius: 0.4rem;
 }
 
+app-folder-info-panel{
+  display: flex;
+  justify-content: center;
+}
+
 .upload-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
-  margin-top: 2rem;
-  height: 100%;
+  justify-items: center;
+  margin-top: auto;
+  margin-bottom: 5rem;
+  font-size: 1.1rem;
 }
 
 .upload-container h4 {
+  font-size: 1.5rem;
   margin: 0 0 1rem 0 !important;
 }
 
@@ -163,14 +171,15 @@
   max-width: 30rem;
   width: 100%;
   height: 10rem;
-  margin: 1rem 2rem;
+  margin-top: 1rem;
   position: relative;
   border: 1px solid #f39c12;
   color: var(--red-color);
   border-radius: 1rem;
   background: var(--white-color);
-  margin-top: 2rem;
+  align-self: center;
 }
+
 
 .upload-icon-text {
   position: absolute;
@@ -184,6 +193,7 @@
 .upload-icon-text p{
   font-size: 1.3rem;
 }
+
 
 
 

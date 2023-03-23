@@ -12,91 +12,30 @@
     <div class="storage-volume">
       <div class="wrapper-circle"></div>
       <div class="circle">
-      <p class="percent">75<span>%</span></p>
-      <p class="used">Used</p>
+        <p class="percent">75<span>%</span></p>
+        <p class="used">Used</p>
       </div>
       <p class="gb">1.5 GB of 2 GB used</p>
     </div>
+  </div>
 
+  <router-outlet></router-outlet>
 
-    <div class="info-about-folder">
+  <div class="upload-container">
+    <div class="text-1">
+      <h4>Import new files</h4>
+      <div class="text-2"></div>
+      <p>Upload new files here</p>
+      <p>Drag and drop files here and</p>
+      <p>assign to right folder</p>
+    </div>
 
-      <div class="storage-info">
-        <div class="left-f-info">
-          <div class="icon-background">
-            <fa-icon [icon]="['fas','file']"></fa-icon>
-          </div>
-          <div>
-            <p>Documents</p>
-            <p>150 files</p>
-          </div>
-        </div>
-        <div class="right-f-info">
-          <p>120 GB</p>
-        </div>
-      </div>
-
-      <div class="storage-info">
-        <div class="left-f-info">
-          <div class="icon-background">
-            <fa-icon [icon]="['fas','file']"></fa-icon>
-          </div>
-          <div>
-            <p>Images</p>
-            <p>130 files</p>
-          </div>
-        </div>
-        <div class="right-f-info">
-          <p>20 GB</p>
-        </div>
-      </div>
-
-      <div class="storage-info">
-        <div class="left-f-info">
-          <div class="icon-background">
-            <fa-icon [icon]="['fas','file']"></fa-icon>
-          </div>
-          <div>
-            <p>Video</p>
-            <p>150 files</p>
-          </div>
-        </div>
-        <div class="right-f-info">
-          <p>150 GB</p>
-        </div>
-      </div>
-
-      <div class="storage-info">
-        <div class="left-f-info">
-          <div class="icon-background">
-            <fa-icon [icon]="['fas','file']"></fa-icon>
-          </div>
-          <div>
-            <p>Others</p>
-            <p>0 files</p>
-          </div>
-        </div>
-        <div class="right-f-info">
-          <p>0 GB</p>
-        </div>
-      </div>
-
-      <div class="upload-container">
-        <div class="text-1">
-          <h4>Import new files</h4>
-          <div class="text-2"></div>
-          <p>Upload new files here</p>
-          <p>Drag and drop files here and</p>
-          <p>assign to right folder</p>
-        </div>
-        <div class="upload-area">
-          <div class="upload-icon-text">
-            <fa-icon [icon]="['fas','cloud-arrow-down']"></fa-icon>
-            <p>Upload files</p>
-          </div>
-
-        </div>
+    <div class="upload-area">
+      <div class="upload-icon-text">
+        <fa-icon [icon]="['fas','cloud-arrow-down']"></fa-icon>
+        <p>Upload files</p>
       </div>
     </div>
   </div>
+
 </div>
