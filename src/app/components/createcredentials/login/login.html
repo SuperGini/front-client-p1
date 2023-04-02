@@ -16,7 +16,10 @@
       <input type="password" required formControlName="password">
       <label class="floating-label">password</label>
     </div>
-    <button type="submit" (click)="onSubmit()">Login</button>
+    <div class="error">
+      <p *ngIf="loginErrorMessage">{{loginErrorMessage}}</p>
+    </div>
+    <button type="submit" (click)="onLogin()">Login</button>
   </form>
 
 </div>

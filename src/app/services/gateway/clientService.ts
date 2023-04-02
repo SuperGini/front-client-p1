@@ -8,6 +8,7 @@ import {
     POST_USER_LOGIN
 } from "../../constants/app.constants";
 import {catchError, Observable, Subject, throwError} from "rxjs";
+import {UserLogin} from "../../model/userLogin";
 
 
 @Injectable({providedIn: 'root'})
@@ -30,27 +31,27 @@ export class ClientService {
                                         requestUser,
                                         {headers: headers, observe: 'response'}
         )
-        .pipe(catchError(this.handleError.bind(this)));
+        .pipe(catchError(this.createUserErrorHandler.bind(this)));
     }
 
 
-    loginUser(user: User) {
+    loginUser(user: UserLogin) {
         const requestUser = JSON.stringify(user);
 
         const headers = new HttpHeaders()
-            .append(CONTENT_TYPE, APPLICATION_JSON_VALUE);
+                                            .append(CONTENT_TYPE, APPLICATION_JSON_VALUE);
 
         return this.httpClient.post<User>(
                                         POST_USER_LOGIN,
                                         requestUser,
                                         {headers: headers, observe: 'response'}
         )
-            .pipe(catchError(this.handleError.bind(this)));
+            .pipe(catchError(this.loginUserErrorHandler.bind(this)));
     }
 
 
-    private handleError(error: HttpErrorResponse){
-
+    private createUserErrorHandler(error: HttpErrorResponse){
+        console.log(`login http error status: ${error.status}`)
         let errorMessage;
 
         switch (error.status) {
@@ -59,6 +60,23 @@ export class ClientService {
                 break;
             case 409:
                 errorMessage = 'Unable to create user username/email already used'
+                break;
+            default:
+                errorMessage = 'Server Error - WTF:))?';
+        }
+
+        this.error.next(errorMessage);
+
+        return throwError(() => new Error(errorMessage));
+    }
+
+    private loginUserErrorHandler(error: HttpErrorResponse){
+        console.log(`login http error status: ${error.status}`)
+        let errorMessage;
+
+        switch (error.status) {
+            case 400:
+                errorMessage = 'Invalid: username/email';
                 break;
             default:
                 errorMessage = 'Server Error - WTF:))?';
