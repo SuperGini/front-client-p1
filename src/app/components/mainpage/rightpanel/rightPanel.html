@@ -34,8 +34,13 @@
       <div class="upload-icon-text">
         <fa-icon [icon]="['fas','cloud-arrow-down']"></fa-icon>
         <p>Upload files</p>
+<!--        multiple -> means that we can select multiple files at once-->
+        <input type="file" multiple value="select" #selectFile
+        (change)="onFileSelected($event)"
+        >
       </div>
     </div>
+    <button (click)="addImage()">Submit image</button>
   </div>
 
 </div>

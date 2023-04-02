@@ -3,8 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {StartComponent} from "./components/start/start.component";
 import {MainPageComponent} from "./components/mainpage/mainPage.component";
 import {UserCredentialContainerComponent} from "./components/createcredentials/user-credential-container.component";
-import {CreateUserComponent} from "./components/createuser/create-user.component";
-import {LoginComponent} from "./components/login/login.component";
+import {CreateUserComponent} from "./components/createcredentials/createuser/create-user.component";
+import {LoginComponent} from "./components/createcredentials/login/login.component";
 import {FolderInfoPanelComponent} from "./components/mainpage/rightpanel/folderinfopanel/folderInfoPanel.component";
 import {PicturesPanelComponent} from "./components/mainpage/rightpanel/picturespanel/picturesPanel.component";
 

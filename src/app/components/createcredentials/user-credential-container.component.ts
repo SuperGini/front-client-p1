@@ -3,8 +3,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {FooterComponent} from "../footer/footer.component";
 import {Router, RouterOutlet} from "@angular/router";
 import {Navigating} from "../interfaces";
-import {CreateUserComponent} from "../createuser/create-user.component";
-import {LoginComponent} from "../login/login.component";
+import {CreateUserComponent} from "./createuser/create-user.component";
+import {LoginComponent} from "./login/login.component";
 
 @Component({
   selector: 'app-create-user',

@@ -20,6 +20,8 @@
     <div class="input-field">
       <input type="password" required formControlName="password">
       <label class="floating-label">password</label>
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
+
     </div>
     <button type="submit" (click)="onSubmit()">Create account</button>
   </form>

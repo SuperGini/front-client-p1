@@ -148,9 +148,15 @@
 }
 
 app-folder-info-panel{
-  display: flex;
-  justify-content: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
 }
+
+router-outlet{
+  display: none;
+}
+
+
 
 .upload-container {
   display: flex;
