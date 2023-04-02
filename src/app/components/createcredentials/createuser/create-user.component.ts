@@ -24,6 +24,7 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
     signupForm: FormGroup;
 
     errorMessage: string = null;
+    successMessage: string = null;
     private errorSub: Subscription;
 
 
@@ -53,8 +54,10 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
             password: password
         }
 
+        this.resetMessages();
+
         this.clientService.createUser(user)
-                            .subscribe(response => console.log(response.status));
+                            .subscribe(response => this.validateStatus(response.status));
     }
 
     toLoginPage(): void {
@@ -63,6 +66,17 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
 
     ngOnDestroy(): void {
         this.errorSub.unsubscribe();
+    }
+
+    validateStatus(httpStatus: number) : void {
+        if(httpStatus === 201){
+            this.successMessage = "User created!"
+        }
+    }
+
+    private resetMessages(){
+        this.errorMessage = null;
+        this.successMessage = null;
     }
 
 }

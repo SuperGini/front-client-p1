@@ -55,7 +55,7 @@ export class ClientService {
 
         switch (error.status) {
             case 400:
-                errorMessage = 'Bad request, invalid: username/email';
+                errorMessage = 'Invalid: username/email';
                 break;
             case 409:
                 errorMessage = 'Unable to create user username/email already used'

@@ -9,7 +9,6 @@
   </div>
   <form class="form-container" [formGroup]="signupForm">
     <div class="input-field">
-
       <input type="text" required formControlName="username">
       <label class="floating-label">username</label>
     </div>
@@ -20,9 +19,12 @@
     <div class="input-field">
       <input type="password" required formControlName="password">
       <label class="floating-label">password</label>
-      <p *ngIf="errorMessage">{{errorMessage}}</p>
-
     </div>
+    <div class="messages">
+      <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+      <p *ngIf="successMessage" class="success-message">{{successMessage}}</p>
+    </div>
+
     <button type="submit" (click)="onSubmit()">Create account</button>
   </form>
 </div>
