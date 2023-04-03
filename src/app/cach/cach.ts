@@ -1,7 +1,7 @@
-import {User} from "../model/user";
+export class SecurityUser {
 
-export let userCache: User = {
-    id: null,
-    username: null,
-    email: null
+    constructor(public id: number, public email: string, public username: string) {
+    }
+
+
 }

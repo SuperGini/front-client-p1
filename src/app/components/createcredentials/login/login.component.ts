@@ -6,7 +6,6 @@ import {ClientService} from "../../../services/gateway/clientService";
 import {UserLogin} from "../../../model/userLogin";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
-import {userCache} from "../../../cach/cach";
 import {User} from "../../../model/user";
 
 @Component({
@@ -57,10 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy, Navigating {
         this.clientService.loginUser(userLogin)
                           .subscribe(response => {
                               console.log(` Login status: ${response.status}`);
-                              this.setUserCache(response.body);
                               this.toMainPage(response.status);
-                              console.log('+++++++++++++++++++' + userCache.username)
-
                           });
 
     }
@@ -73,12 +69,6 @@ export class LoginComponent implements OnInit, OnDestroy, Navigating {
       if (status === 200){
         this.router.navigate(['/mainPage']);
       }
-    }
-
-    setUserCache(user: User){
-        userCache.id = user.id;
-        userCache.username = user.username;
-        userCache.email = user.email;
     }
 
 }
