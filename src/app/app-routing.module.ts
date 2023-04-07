@@ -7,7 +7,10 @@ import {CreateUserComponent} from "./components/createcredentials/createuser/cre
 import {LoginComponent} from "./components/createcredentials/login/login.component";
 import {FolderInfoPanelComponent} from "./components/mainpage/rightpanel/folderinfopanel/folderInfoPanel.component";
 import {PicturesPanelComponent} from "./components/mainpage/rightpanel/picturespanel/picturesPanel.component";
+
+import {CreateFolderPopupComponent} from "./components/popup/createfolder/create-folder-popup.component";
 import {canActivateLogin} from "./guards/AuthGuardService";
+
 
 const routes: Routes = [
   {
@@ -17,8 +20,9 @@ const routes: Routes = [
   },
 
   {
-    path: 'mainPage',
-    component: MainPageComponent, canActivate: [canActivateLogin],
+    path: 'mainPage', canActivate: [canActivateLogin],
+  //  path: 'mainPage',
+    component: MainPageComponent,
     children: [
       {
         path: 'info/:id',
@@ -27,8 +31,13 @@ const routes: Routes = [
       {
         path: 'pictures/:id',
         component: PicturesPanelComponent
-      }
+      },
     ]
+  },
+
+  {
+    path: 'test',
+    component: CreateFolderPopupComponent
   },
 
   {

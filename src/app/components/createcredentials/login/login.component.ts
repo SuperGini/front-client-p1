@@ -2,11 +2,12 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Navigating} from "../../interfaces";
-import {ClientService} from "../../../services/gateway/clientService";
+import {UserService} from "../../../services/gateway/userService";
 import {UserLogin} from "../../../model/userLogin";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
 import {User} from "../../../model/user";
+import {ErrorMsg} from "../../../cach/cach";
 
 @Component({
     selector: 'app-login2',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy, Navigating {
     private errorSub: Subscription;
 
 
-    constructor(private router: Router, private clientService: ClientService) {
+    constructor(private router: Router, private clientService: UserService, private error: ErrorMsg) {
     }
 
     ngOnInit(): void {
@@ -34,8 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy, Navigating {
             username: new FormControl(null),
             password: new FormControl(null)
         });
-
-        this.errorSub = this.clientService.error
+        // dont forge to unsubscribe -> memory leaks
+        this.errorSub = this.error.errorMessage
             .subscribe(error => {
                 this.loginErrorMessage = error
             });

@@ -16,37 +16,39 @@ import {
   faFile,
   faCirclePlay,
   faFileLines,
-  faAngleLeft, faAngleRight, faGear, faCloudArrowDown
+  faAngleLeft, faAngleRight, faGear, faCloudArrowDown, faCircleXmark
 } from "@fortawesome/free-solid-svg-icons";
+
 
 
 @Injectable({providedIn: 'root'})
 export class FontAwesomeIconService {
 
-  constructor(private library: FaIconLibrary) {
-  }
+    constructor(private library: FaIconLibrary) {
+    }
 
-  loadIcons(){
-    this.library.addIcons(
-      faHouse,
-      faFolder,
-      faUser,
-      faTrashCan,
-      faFolderPlus,
-      faMagnifyingGlass,
-      faFilePdf,
-      faImage,
-      faFilm,
-      faSdCard,
-      faEllipsis,
-      faArrowDown,
-      faFile,
-      faCirclePlay,
-      faFileLines,
-      faAngleLeft,
-      faAngleRight,
-      faGear,
-      faCloudArrowDown
-    );
-  }
+    loadIcons() {
+        this.library.addIcons(
+            faHouse,
+            faFolder,
+            faUser,
+            faTrashCan,
+            faFolderPlus,
+            faMagnifyingGlass,
+            faFilePdf,
+            faImage,
+            faFilm,
+            faSdCard,
+            faEllipsis,
+            faArrowDown,
+            faFile,
+            faCirclePlay,
+            faFileLines,
+            faAngleLeft,
+            faAngleRight,
+            faGear,
+            faCloudArrowDown,
+            faCircleXmark
+        );
+    }
 }

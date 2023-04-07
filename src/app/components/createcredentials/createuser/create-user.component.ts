@@ -4,9 +4,10 @@ import {Navigating} from "../../interfaces";
 import {Router} from "@angular/router";
 import {User} from "../../../model/user";
 import {HttpClient} from "@angular/common/http";
-import {ClientService} from "../../../services/gateway/clientService";
+import {UserService} from "../../../services/gateway/userService";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
+import {ErrorMsg} from "../../../cach/cach";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
     private errorSub: Subscription;
 
 
-    constructor(private router: Router, private httpClient: HttpClient, private clientService: ClientService) {
+    constructor(private router: Router, private httpClient: HttpClient, private clientService: UserService, private error: ErrorMsg) {
     }
 
     ngOnInit(): void {
@@ -37,8 +38,8 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
             email: new FormControl(null, [Validators.required]),
             password: new FormControl(null, Validators.required)
         });
-
-        this.errorSub = this.clientService.error.subscribe(error => {
+            //don't forget to unsubscribe -> memory leaks
+        this.errorSub = this.error.errorMessage.subscribe(error => {
             this.errorMessage = error;
         });
     }

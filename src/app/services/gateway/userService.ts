@@ -4,16 +4,15 @@ import {User} from "../../model/user";
 import {APPLICATION_JSON_VALUE, CONTENT_TYPE, POST_USER_CREATE, POST_USER_LOGIN} from "../../constants/app.constants";
 import {BehaviorSubject, catchError, Observable, Subject, tap, throwError} from "rxjs";
 import {UserLogin} from "../../model/userLogin";
-import {SecurityUser} from "../../cach/cach";
+import {ErrorMsg, SecurityContext, SecurityUser} from "../../cach/cach";
 
 
 @Injectable({providedIn: 'root'})
-export class ClientService {
+export class UserService {
 
-    error = new Subject<string>;
-    securityUser = new BehaviorSubject<SecurityUser>(null);
+   // error = new Subject<string>;
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private securityContext: SecurityContext, private error: ErrorMsg) {
     }
 
 
@@ -46,13 +45,15 @@ export class ClientService {
             .pipe(catchError(this.loginUserErrorHandler.bind(this)),
                 tap(response => {
                     console.log(response);
-                    console.log(response.username);
+                    console.log(response.body.username);
                     const securityUser = new SecurityUser(
-                        response.id,
-                        response.email,
-                        response.username
+                        response.body.id,
+                        response.body.email,
+                        response.body.username
                     );
-                    this.securityUser.next(securityUser);
+                    console.log(`User logged is: ${securityUser.id}`);
+
+                    this.securityContext.securityUser.next(securityUser);
                 })
             );
     }
@@ -73,7 +74,7 @@ export class ClientService {
                 errorMessage = 'Server Error - WTF:))?';
         }
 
-        this.error.next(errorMessage);
+        this.error.errorMessage.next(errorMessage);
 
         return throwError(() => new Error(errorMessage));
     }
@@ -90,7 +91,7 @@ export class ClientService {
                 errorMessage = 'Server Error - WTF:))?';
         }
 
-        this.error.next(errorMessage);
+        this.error.errorMessage.next(errorMessage);
 
         return throwError(() => new Error(errorMessage));
     }

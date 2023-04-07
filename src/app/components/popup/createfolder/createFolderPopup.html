@@ -1,0 +1,15 @@
+<div class="pop-up-container">
+    <div class="close-icon">
+        <fa-icon [icon]="['fas','circle-xmark']" (click)="closePopUp()"></fa-icon>
+    </div>
+    <div class="pop-up-wrapper">
+        <div class="text">
+            <h3>CREATE FOLDER</h3>
+        </div>
+        <form [formGroup]="folderForm" class="create-folder">
+            <input type="text" required formControlName="folderName">
+            <label>Folder name</label>
+            <button (click)="createFolder()">Create Folder</button>
+        </form>
+    </div>
+</div>

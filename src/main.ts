@@ -7,6 +7,7 @@ import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AppModule} from "./app/app.module";
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 /**
  * since I'm using standalone components all the services need to be declared here so the can be used
@@ -14,17 +15,21 @@ import {AppModule} from "./app/app.module";
  * */
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    //import all the module globally here so I don't have to declare them in component every time
-    importProvidersFrom(  //very important this line -> it enables routing with standalone components
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      MatIconModule,
-      HttpClientModule,
-      BrowserModule,
-      AppModule,
-      FontAwesomeModule), // -> https://www.npmjs.com/package/@fortawesome/angular-fontawesome -> install and shit
-    //declare here all the services that we use in the app so we cal use them globally -> Singleton and shit
-    MatIconRegistry,
-  ]
+    providers: [
+        //import all the module globally here so I don't have to declare them in component every time
+        //the idea is that any modules used by components or services need to be provided here
+        //if the component or service uses something from that module
+        importProvidersFrom(  //very important this line -> it enables routing with standalone components
+            AppRoutingModule,
+            BrowserAnimationsModule,
+            MatIconModule,
+            HttpClientModule,
+            BrowserModule,
+            AppModule,
+            FontAwesomeModule), // -> https://www.npmjs.com/package/@fortawesome/angular-fontawesome -> install and shit
+        //declare here all the services that we use in the app so we cal use them globally -> Singleton and shit
+        MatIconRegistry,
+        MatDialogModule,
+
+    ]
 });

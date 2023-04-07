@@ -1,16 +1,16 @@
 import {inject, Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from "@angular/router";
-import {ClientService} from "../services/gateway/clientService";
 import {map, take} from "rxjs";
+import {SecurityContext} from "../cach/cach";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuardService {
 
-    constructor(private clientService: ClientService, private router: Router) {
+    constructor(private securityContext: SecurityContext, private router: Router) {
     }
 
     canActivate() {
-        return this.clientService.securityUser
+        return this.securityContext.securityUser
             .pipe(
                 take(1), //takes 1 value and automatically unsubscribes
                 map(user => {

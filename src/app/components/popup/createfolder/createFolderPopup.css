@@ -1,0 +1,103 @@
+.pop-up-container{
+    max-width: 70rem;
+    max-height: 40rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white-color);
+    border-radius: 2rem;
+}
+
+input, label, button {
+    display: block;
+}
+
+.close-icon{
+    align-self: end;
+    padding: 1rem;
+}
+
+fa-icon {
+    font-size: 3rem;
+    color: var(--red-color);
+}
+
+fa-icon:hover{
+    cursor: pointer;
+}
+
+h3 {
+    font-size: 3rem;
+    color: var(--dark-gray-color);
+}
+
+.pop-up-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.create-folder {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+input{
+    height: 4rem;
+    border: 2px solid var(--orange-yellow-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+input:focus{
+    outline: none;
+}
+
+label{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    pointer-events: none;
+    font-size: 1.6rem;
+    color: var(--white-gray-color);
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus ~ label,
+    /*dont forget to add to the input field the -> required validator*/
+input:valid ~ label {
+    top: -10px;
+    left: 15px;
+    font-size: 1.4rem;
+    background-color: var(--white-color);
+    padding: 0 10px 0 10px;
+    color: var(--dark-gray-color);
+    font-weight: 500;
+}
+
+button {
+    height: 5rem;
+    background: var(--orange-yellow-color);
+    border-radius: 1rem;
+    border: 1px solid var(--orange-yellow-color);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--white-color);
+    margin-top: 2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover{
+    cursor: pointer;
+    background: #db8c10;
+}
