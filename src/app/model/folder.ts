@@ -4,15 +4,23 @@ export interface FolderRequest {
 }
 
 export interface FolderResponse {
-    id: number,
+    id: string,
     projectName: string,
-    createDate: Date,
-    updateDate: Date,
-    numberOfImages: number,
-    numberOfVideos: number,
-    numberOfOtherFiles: number,
-    folderCapacity: string,
-    currentFolderCapacity: string,
-    lastUpdateByUser: Date,
-    userId: number
+    createDate: string,
+    updateDate: string,
+    numberOfImages?: number,
+    numberOfVideos?: number,
+    numberOfOtherFiles?: number,
+    folderCapacity?: string,
+    currentFolderCapacity?: string,
+    lastUpdateByUser: string,
+    userId: string,
+    username?: string
+}
+
+export interface FolderResponsePagination {
+
+    totalPages: number,
+    folderResponses: Array<FolderResponse>
+
 }

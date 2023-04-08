@@ -20,8 +20,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'mainPage', canActivate: [canActivateLogin],
-  //  path: 'mainPage',
+ //   path: 'mainPage', canActivate: [canActivateLogin],
+    path: 'mainPage',
     component: MainPageComponent,
     children: [
       {
