@@ -23,7 +23,6 @@ export class SvgIconsService {
 
   constructor(private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
-
   }
 
   loadIcons(): void {

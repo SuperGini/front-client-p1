@@ -7,7 +7,7 @@ import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AppModule} from "./app/app.module";
-import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 
 /**
  * since I'm using standalone components all the services need to be declared here so the can be used

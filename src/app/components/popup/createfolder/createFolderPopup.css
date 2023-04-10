@@ -19,12 +19,12 @@ input, label, button {
     padding: 1rem;
 }
 
-fa-icon {
+.x-icon {
     font-size: 3rem;
     color: var(--red-color);
 }
 
-fa-icon:hover{
+.x-icon:hover{
     cursor: pointer;
 }
 
@@ -100,4 +100,45 @@ button {
 button:hover{
     cursor: pointer;
     background: #db8c10;
+}
+
+mat-radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.x {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.common {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.audio{
+    color: var(--red-color);
+}
+
+.video {
+    color: var(--green-color);
+
+}
+
+.file {
+    color: var(--orange-yellow-color);
+}
+
+.picture{
+    color: var(--blue-dark-color);
+}
+
+.other {
+    color: var(--orange-color);
+
 }

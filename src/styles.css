@@ -109,3 +109,13 @@ https://stackoverflow.com/questions/54868967/how-to-get-angulars-router-outlet-t
 router-outlet{
   display: none;
 }
+
+
+/**
+homePage paginator buttons
+*/
+.mat-mdc-icon-button.mat-mdc-button-base:hover {
+  background: var(--blue-linkeding-collor);
+  border-radius: 50%;
+}
+

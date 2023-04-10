@@ -1,6 +1,6 @@
 <div class="pop-up-container">
     <div class="close-icon">
-        <fa-icon [icon]="['fas','circle-xmark']" (click)="closePopUp()"></fa-icon>
+        <fa-icon [icon]="['fas','circle-xmark']" (click)="closePopUp()" class="x-icon"></fa-icon>
     </div>
     <div class="pop-up-wrapper">
         <div class="text">
@@ -9,6 +9,31 @@
         <form [formGroup]="folderForm" class="create-folder">
             <input type="text" required formControlName="folderName">
             <label>Folder name</label>
+            <div class="folder-icons">
+                <mat-radio-group [(ngModel)]="radioValue" [ngModelOptions]="{standalone: true}">
+                    <div class="x">
+                        <fa-icon  [icon]="['fas','video']" class="video common"></fa-icon>
+                        <mat-radio-button [value]="'video'"></mat-radio-button>
+                    </div>
+                    <div class="x">
+                        <fa-icon  [icon]="['fas','circle-play']" class="audio common"></fa-icon>
+                        <mat-radio-button [value]="'audio'"></mat-radio-button>
+                    </div>
+                    <div class="x">
+                        <fa-icon  [icon]="['fas','folder-open']" class="file common"></fa-icon>
+                        <mat-radio-button [value]="'file'"></mat-radio-button>
+                    </div>
+                    <div class="x">
+                        <fa-icon  [icon]="['fas','camera-retro']" class="picture common"></fa-icon>
+                        <mat-radio-button [value]="'picture'"></mat-radio-button>
+                    </div>
+                    <div class="x">
+                        <fa-icon  [icon]="['fas','question']" class="other common"></fa-icon>
+                        <mat-radio-button [value]="'other'"></mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+
             <button (click)="createFolder()">Create Folder</button>
         </form>
     </div>

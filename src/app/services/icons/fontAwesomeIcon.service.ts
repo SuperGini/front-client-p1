@@ -1,22 +1,31 @@
 import {Injectable} from "@angular/core";
 import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {
-  faHouse,
-  faTrashCan,
-  faUser,
-  faFolder,
-  faFolderPlus,
-  faMagnifyingGlass,
-  faFilePdf,
-  faImage,
-  faFilm,
-  faSdCard,
-  faEllipsis,
-  faArrowDown,
-  faFile,
-  faCirclePlay,
-  faFileLines,
-  faAngleLeft, faAngleRight, faGear, faCloudArrowDown, faCircleXmark
+    faHouse,
+    faTrashCan,
+    faUser,
+    faFolder,
+    faFolderPlus,
+    faMagnifyingGlass,
+    faFilePdf,
+    faImage,
+    faFilm,
+    faSdCard,
+    faEllipsis,
+    faArrowDown,
+    faFile,
+    faCirclePlay,
+    faFileLines,
+    faAngleLeft,
+    faAngleRight,
+    faGear,
+    faCloudArrowDown,
+    faCircleXmark,
+    faMusic,
+    faFileZipper,
+    faFolderOpen,
+    faVideo,
+    faPlay, faCameraRetro, faQuestion
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -48,7 +57,14 @@ export class FontAwesomeIconService {
             faAngleRight,
             faGear,
             faCloudArrowDown,
-            faCircleXmark
+            faCircleXmark,
+            faMusic,
+            faFileZipper,
+            faFolderOpen,
+            faVideo,
+            faPlay,
+            faCameraRetro,
+            faQuestion
         );
     }
 }

@@ -17,7 +17,7 @@ export class FolderService {
     private securityContext = inject(SecurityContext);
     private error = inject(ErrorMsg);
 
-    createFolder(folderName: string) {
+    createFolder(folderName: string, folderType: string) {
 
         const userId = this.securityContext.securityUser.value.id;
         console.log(`id----------->: ${this.securityContext.securityUser.getValue().id}`)
@@ -28,7 +28,9 @@ export class FolderService {
 
         const createFolderRequest: FolderRequest = {
             projectName: folderName,
-            userId: userId
+            userId: userId,
+            folderType: folderType
+
         }
 
         console.log(`creating folder with user id: ${userId} and folderName: ${folderName}`);
@@ -53,13 +55,13 @@ export class FolderService {
      * in options
      * */
 
-    getFoldersWithPagination(userId: string, pageNumber: number): Observable<FolderResponsePagination> {
+    getFoldersWithPagination(userId: string, pageNumber: number, pageElements: number): Observable<FolderResponsePagination> {
 
         const httpHeaders = new HttpHeaders()
             .append(CONTENT_TYPE, APPLICATION_JSON_VALUE);
 
         return this.httClient.get<FolderResponsePagination>(
-            GET_FOLDERS_PAGE + `/${userId}/${pageNumber}`,
+            GET_FOLDERS_PAGE + `/${userId}/${pageNumber}/${pageElements}`,
             {headers: httpHeaders}
         )
         .pipe(

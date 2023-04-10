@@ -1,9 +1,11 @@
 import {Component, inject, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FolderService} from "../../../services/gateway/folderService";
 import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {NgSwitchCase} from "@angular/common";
+import {MatRadioModule} from "@angular/material/radio";
 
 /**
  * https://material.angular.io/components/dialog/overview
@@ -17,11 +19,15 @@ import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-es
         FontAwesomeModule,
         MatDialogModule,
         ReactiveFormsModule,
+        MatRadioModule,
+        FormsModule,
     ],
     standalone: true
 })
 export class CreateFolderPopupComponent implements OnInit{
 
+
+    radioValue: string;
     folderForm: FormGroup;
     private dialogRef = inject(MatDialogRef<CreateFolderPopupComponent>);
     private folderService = inject(FolderService);
@@ -37,12 +43,11 @@ export class CreateFolderPopupComponent implements OnInit{
         this.dialogRef.close();
     }
 
-
     createFolder(): void {
         const folderName = this.folderForm.value.folderName;
         console.log(folderName);
-
-        this.folderService.createFolder(folderName).subscribe(
+        console.log(this.radioValue + ` ++++++++++++++++`)
+        this.folderService.createFolder(folderName, this.radioValue).subscribe(
             response => console.log(`folder created status is: ${response.status}`)
         );
     }

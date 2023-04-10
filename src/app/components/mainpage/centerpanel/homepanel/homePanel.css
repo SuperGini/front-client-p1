@@ -120,7 +120,7 @@ ul {
 }
 
 .table-body {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -150,7 +150,7 @@ ul {
 
 .table-body-1 fa-icon {
   font-size: 2rem;
-  margin-right: 1rem;
+  /*margin-right: 1rem;*/
 }
 
 .table-body-2 p:nth-child(2),
@@ -176,15 +176,46 @@ ul {
   color: #f39c12;
 }
 
-.page-number {
+mat-paginator {
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  background: var(--white-color);
+}
+
+.common {
+  width: 3rem;
+  height: 3rem;
+  color: var(--white-color);
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--dark-gray-color);
-  margin-bottom: 1rem;
+  align-items: center;
+  border-radius: 0.6rem;
+  margin-right: 1rem;
 }
+
+.audio{
+  background: var(--red-color);
+}
+
+.video {
+  background: var(--green-color);
+
+}
+
+.folder {
+  background: var(--orange-yellow-color);
+}
+
+.picture{
+  background: var(--blue-dark-color);
+}
+
+.other {
+  background: var(--orange-color);
+}
+
+
+
 
 
 

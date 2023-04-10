@@ -1,6 +1,7 @@
 export interface FolderRequest {
     projectName: string,
-    userId: string
+    userId: string,
+    folderType: string
 }
 
 export interface FolderResponse {
@@ -15,12 +16,21 @@ export interface FolderResponse {
     currentFolderCapacity?: string,
     lastUpdateByUser: string,
     userId: string,
-    username?: string
+    username?: string,
+    folderType?: string
+
 }
 
 export interface FolderResponsePagination {
-
     totalPages: number,
+    totalElements: number,
     folderResponses: Array<FolderResponse>
-
 }
+
+// export enum FolderType {
+//     VIDEO = 'video',
+//     AUDIO = 'audio',
+//     FILE = 'file',
+//     OTHER = 'other',
+//     PICTURE = 'picture'
+// }
