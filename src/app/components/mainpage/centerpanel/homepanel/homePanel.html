@@ -71,8 +71,8 @@
       </div>
 
 <!---------------TABLE CONTAINER--------------------------------------->
-      <div class="table-body" *ngFor="let folder of homePanelFolders">
-        <ul class="table-body-row">
+      <div class="table-body" *ngFor="let folder of homePanelFolders" >
+        <ul class="table-body-row" (click)="getFolderInfo(folder.id )" [ngClass]="{'active-row': folder.id === htmlIndex}" #infoTable >
 
             <li>
               <div class="table-body-1">

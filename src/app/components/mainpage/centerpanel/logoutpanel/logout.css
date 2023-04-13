@@ -6,10 +6,20 @@
 
 .btn-dont-know button {
   padding: 0.8rem 4rem;
-  margin: 2rem 2rem;
+  margin: 0.8rem 2rem;
   border-radius: 0.5rem;
   border: 2px solid var(--red-color);
   background: var(--white-color);
   font-weight: 700;
   color: var(--dark-gray-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-dont-know button:hover{
+  cursor: pointer;
+  color: var(--white-color);
+  background: var(--red-color);
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(-1px) !important;
+  border: 2px solid var(--white-color);
 }
