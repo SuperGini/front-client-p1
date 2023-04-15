@@ -60,7 +60,6 @@
 .link:hover{
   cursor: pointer;
   color: var(--white-color);
-  border-left: 6px solid var(--white-color);
 }
 
 .left-links fa-icon {
@@ -116,4 +115,24 @@
   cursor: pointer;
 }
 
+
+.xxx{
+  color: var(--white-color);
+  border-left: 6px solid var(--orange-yellow-color);
+
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
+  /*transform: translateY(-1px);*/
+
+}
+
+.yyy{
+  color: var(--white-color);
+  border-left: 6px solid #cb4335;
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
+  /*transform: translateY(-1px);*/
+}
+
+.red-color {
+  color: #cb4335;
+}
 

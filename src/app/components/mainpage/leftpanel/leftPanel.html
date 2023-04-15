@@ -6,26 +6,26 @@
     </h4>
     <ul class="left-links">
       <li>
-        <div class="link">
-          <fa-icon [icon]="['fas','house']"></fa-icon>
+        <div class="link" (click)="home()" [ngClass]="{'xxx': activeLink === 'home'}">
+          <fa-icon [icon]="['fas','house']" ></fa-icon>
           <a>Home</a>
         </div>
       </li>
       <li>
-        <div class="link">
-          <fa-icon [icon]="['fas','folder']"></fa-icon>
+        <div class="link" (click)="myFolders()" [ngClass]="{'xxx': activeLink === 'myFolders'}">
+          <fa-icon [icon]="['fas','folder']" ></fa-icon>
           <a>My Folders</a>
         </div>
       </li>
       <li>
-        <div class="link delete">
-          <fa-icon [icon]="['fas','trash-can']"></fa-icon>
+        <div class="link delete" (click)="delete()" [ngClass]="{'yyy': activeLink === 'delete'}">
+          <fa-icon [icon]="['fas','trash-can']" [ngClass]="{'red-color': activeLink === 'delete'}"></fa-icon>
           <a>Delete Folder</a>
         </div>
       </li>
       <li>
-        <div class="link">
-          <fa-icon [icon]="['fas','user']"></fa-icon>
+        <div class="link" (click)="profile()" [ngClass]="{'xxx': activeLink === 'profile'}">
+          <fa-icon [icon]="['fas','user']" ></fa-icon>
           <a>Profile</a>
         </div>
       </li>

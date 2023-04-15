@@ -1,14 +1,14 @@
 import {inject, Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
-import {FolderRequest, FolderResponse, FolderResponsePagination} from "../../model/folder";
-import {ErrorMsg, SecurityContext} from "../../cach/cach";
+import {FolderRequest, FolderResponse, FolderResponsePagination, PageOptions} from "../../model/folder";
+import {ErrorMsg, FolderArrays, SecurityContext} from "../../cach/cach";
 import {
     APPLICATION_JSON_VALUE,
     CONTENT_TYPE,
     GET_FOLDERS_PAGE,
     POST_CREATE_FOLDER
 } from "../../constants/app.constants";
-import {catchError, map, Observable, take, throwError} from "rxjs";
+import {catchError, map, Observable, take, tap, throwError} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class FolderService {
@@ -16,6 +16,7 @@ export class FolderService {
     private httClient = inject(HttpClient);
     private securityContext = inject(SecurityContext);
     private error = inject(ErrorMsg);
+    private arrayFolders = inject(FolderArrays);
 
     createFolder(folderName: string, folderType: string) {
 
@@ -55,7 +56,7 @@ export class FolderService {
      * in options
      * */
 
-    getFoldersWithPagination(userId: string, pageNumber: number, pageElements: number): Observable<FolderResponsePagination> {
+    getUserFoldersWithPagination(userId: string, pageNumber: number, pageElements: number): Observable<FolderResponsePagination> {
 
         const httpHeaders = new HttpHeaders()
             .append(CONTENT_TYPE, APPLICATION_JSON_VALUE);
@@ -66,7 +67,42 @@ export class FolderService {
         )
         .pipe(
             map(response => this.convert(response)),
-            catchError(this.createFolderErrorHandler.bind(this)));
+            tap(convertedResponse =>{
+                                        this.arrayFolders.allFoldersSubject.next(convertedResponse.folderResponses);
+                                        const pageOptions: PageOptions = {
+                                            pageIndex: pageNumber,
+                                            pageSize: pageElements,
+                                            length: convertedResponse.totalElements,
+                                        }
+                                        this.arrayFolders.pageOptionsSubject.next(pageOptions)}
+            ),
+            catchError(this.createFolderErrorHandler.bind(this))
+        );
+    }
+
+    getAllFoldersWithPagination(pageNumber: number, pageElements: number):Observable<FolderResponsePagination>{
+        const httpHeaders = new HttpHeaders()
+            .append(CONTENT_TYPE, APPLICATION_JSON_VALUE);
+
+        return this.httClient.get<FolderResponsePagination>(
+            GET_FOLDERS_PAGE + `/${pageNumber}/${pageElements}`,
+            {headers: httpHeaders}
+        )
+        .pipe(
+            map(response => this.convert(response)),
+            tap(convertedResponse => {
+                                    this.arrayFolders.allFoldersSubject.next(convertedResponse.folderResponses);
+
+                                    const pageOptions: PageOptions = {
+                                        pageIndex: pageNumber,
+                                        pageSize: pageElements,
+                                        length: convertedResponse.totalElements,
+                                    }
+                                    this.arrayFolders.pageOptionsSubject.next(pageOptions)
+            }
+                    ),
+            catchError(this.createFolderErrorHandler.bind(this))
+        );
     }
 
     private convert(page: FolderResponsePagination): FolderResponsePagination{

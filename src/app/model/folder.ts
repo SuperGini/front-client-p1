@@ -27,6 +27,14 @@ export interface FolderResponsePagination {
     folderResponses: Array<FolderResponse>
 }
 
+export interface PageOptions {
+    pageIndex: number,
+    pageSize: number,
+    length?: number
+}
+
+
+
 // export enum FolderType {
 //     VIDEO = 'video',
 //     AUDIO = 'audio',
@@ -34,3 +42,5 @@ export interface FolderResponsePagination {
 //     OTHER = 'other',
 //     PICTURE = 'picture'
 // }
+
+

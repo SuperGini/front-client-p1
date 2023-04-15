@@ -1,11 +1,12 @@
-import {AfterViewChecked, Component, ElementRef, inject, OnInit, ViewChild} from "@angular/core";
+import {Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FolderService} from "../../../../services/gateway/folderService";
 import {FolderResponse} from "../../../../model/folder";
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpParams} from "@angular/common/http";
+import {Flag, Flags, FolderArrays} from "../../../../cach/cach";
+import {skipWhile, Subscription, take} from "rxjs";
 
 @Component({
     selector: "app-home-panel",
@@ -22,13 +23,21 @@ import {HttpParams} from "@angular/common/http";
     ],
     standalone: true
 })
-export class HomePanelComponent implements OnInit{
+export class HomePanelComponent implements OnInit, OnDestroy {
 
-    @ViewChild('infoTable')
-    infoTable: ElementRef;
+    private firstSubscription: Subscription;
+    private secondSubscription: Subscription;
+    private thirdSubscription: Subscription;
+    private forthSubscription: Subscription;
+    private homeMyFoldersFlag: string;
+
+    private folderService = inject(FolderService);
+    private router = inject(Router);
+    private activeRoute = inject(ActivatedRoute);
+    private folderArrays = inject(FolderArrays);
+    private flag = inject(Flag);
+
     htmlIndex: string;
-
-
     length: number;
     pageSize: number = 6;
     pageIndex: number = 0;
@@ -39,23 +48,25 @@ export class HomePanelComponent implements OnInit{
     pageEvent: PageEvent;
     homePanelFolders: Array<FolderResponse>;
 
-    private folderService = inject(FolderService);
-    private router = inject(Router);
-    private activeRoute = inject(ActivatedRoute);
 
-    handlePageEvent(e: PageEvent) {
+    ngOnInit(): void {
+        this.firstSubscription = this.setAllFoldersFromSubject();
+        this.forthSubscription = this.setPageOptionsFromSubject();
+        this.setFlagFromSubject();
+
+    }
+
+    handlePageEvent(e: PageEvent): void {
+
+        this.setFlagFromSubject();
         this.pageEvent = e;
+
+
         this.length = e.length;
         this.pageSize = e.pageSize;
         this.pageIndex = e.pageIndex;
+        this.getFolders(this.homeMyFoldersFlag);
         console.log(this.homePanelFolders);
-
-        this.getFoldersWithPagination(this.pageIndex, this.pageSize);
-    }
-
-    ngOnInit(): void {
-        console.log(this.homePanelFolders);
-        this.getFoldersWithPagination(this.pageIndex, this.pageSize);
     }
 
     /**
@@ -65,20 +76,77 @@ export class HomePanelComponent implements OnInit{
      *
      * I use the i parameter here to set active row when I click the row
      * */
-    getFolderInfo(index: string){
+    getFolderInfo(index: string): void {
         console.log(`Selected folder id: ${index}`);
-        this.router.navigate(['info', index],  {relativeTo: this.activeRoute});
+        this.router.navigate(['info', index], {relativeTo: this.activeRoute});
 
         this.htmlIndex = index;
 
     }
 
-    private getFoldersWithPagination(pageIndex: number, pageSize: number) {
-        this.folderService.getFoldersWithPagination('433378544657914167', pageIndex, pageSize)
+    private getFolders(activeLink: string) {
+        switch (activeLink) {
+            case Flags.HOME:
+                this.getAllFoldersWithPagination( this.pageIndex, this.pageSize);
+                this.secondSubscription = this.setAllFoldersFromSubject();
+                break;
+            case Flags.MY_FOLDERS:
+                this.getUserFoldersWithPagination( this.pageIndex, this.pageSize);
+                this.thirdSubscription = this.setAllFoldersFromSubject();
+                break;
+        }
+    }
+
+    private getUserFoldersWithPagination(pageIndex: number, pageSize: number): void {
+        this.folderService.getUserFoldersWithPagination('434830067258757412', pageIndex, pageSize)
             .subscribe(response => {
                 console.log(response);
                 this.homePanelFolders = response.folderResponses;
-                this.length = response.totalElements;
             })
     }
+
+    private getAllFoldersWithPagination(pageIndex: number, pageSize: number): void {
+        this.folderService.getAllFoldersWithPagination(pageIndex, pageSize)
+            .subscribe(response => {
+                console.log(response);
+            })
+    }
+
+    //no need to unsubscribe here since the take(1) function will automatically unsubscribe
+    private setFlagFromSubject(){
+        this.flag.homeMyFoldersFlag
+            .pipe(
+                skipWhile(x => x === null || x === undefined),
+                take(1)
+            )
+            .subscribe(flag => {
+                this.homeMyFoldersFlag = flag;
+                console.log(`The flag is: ` + this.homeMyFoldersFlag + `  !!!!!`);
+            });
+    }
+
+
+    private setAllFoldersFromSubject(): Subscription {
+        return this.folderArrays.allFoldersSubject
+            .subscribe(allFoldersArray => {
+                console.log(`+++++++++++++ ` + allFoldersArray)
+                this.homePanelFolders = allFoldersArray
+            });
+    }
+
+    private setPageOptionsFromSubject(): Subscription{
+        return this.folderArrays.pageOptionsSubject.subscribe(x => {
+            this.pageIndex = x.pageIndex;
+            this.pageSize = x.pageSize;
+            this.length = x.length;
+        })
+    }
+
+    ngOnDestroy(): void {
+        this.firstSubscription.unsubscribe();
+        this.secondSubscription.unsubscribe();
+        this.thirdSubscription.unsubscribe();
+        this.forthSubscription.unsubscribe();
+    }
+
 }

@@ -72,7 +72,7 @@
 
 <!---------------TABLE CONTAINER--------------------------------------->
       <div class="table-body" *ngFor="let folder of homePanelFolders" >
-        <ul class="table-body-row" (click)="getFolderInfo(folder.id )" [ngClass]="{'active-row': folder.id === htmlIndex}" #infoTable >
+        <ul class="table-body-row" (click)="getFolderInfo(folder.id )" [ngClass]="{'active-row': folder.id === htmlIndex}">
 
             <li>
               <div class="table-body-1">
@@ -113,7 +113,6 @@
                      (page)="handlePageEvent($event)"
                      [length]="length"
                      [pageSize]="pageSize"
-
                      [showFirstLastButtons]="showFirstLastButtons"
                      [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
                      [hidePageSize]="hidePageSize"
