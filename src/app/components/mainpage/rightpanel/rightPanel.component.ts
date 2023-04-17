@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FolderInfoPanelComponent} from "./folderinfopanel/folderInfoPanel.component";
 import {PicturesPanelComponent} from "./picturespanel/picturesPanel.component";
@@ -7,6 +7,7 @@ import {FileHandle} from "../../../model/file-handle.model";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ImageService} from "../../../services/image.service";
 import {Image} from "../../../model/image";
+import {SecurityContext, SecurityUser} from "../../../cach/cach";
 
 @Component({
   selector: "app-right-panel",
@@ -20,8 +21,10 @@ import {Image} from "../../../model/image";
   ],
   standalone: true
 })
-export class RightPanelComponent{
+export class RightPanelComponent implements OnInit{
 
+
+  username:string = 'username';
 
   image: Image = {
     imageInfo: '',
@@ -29,8 +32,17 @@ export class RightPanelComponent{
   }
 
 
-  constructor(private router: Router, private sanitizer: DomSanitizer, private imageService: ImageService) {
+  constructor(private router: Router,
+              private sanitizer: DomSanitizer,
+              private imageService: ImageService,
+              private securityContext: SecurityContext) {
   }
+
+
+  ngOnInit(): void {
+    this.username = this.securityContext.securityUser.value.username;
+  }
+
 
 
   onFileSelected(event: Event){

@@ -1,0 +1,148 @@
+.delete-container{
+    width: 70rem;
+    height: 40rem;
+    background: var(--white-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.x-icon{
+    align-self: end;
+    padding: 1rem;
+    font-size: 3rem;
+    color: var(--red-color);
+}
+
+.x-icon:hover{
+cursor: pointer;
+}
+
+.center-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.trash{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.trash-can-1{
+    font-size: 5rem;
+    color: var(--red-color);
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--dark-gray-color);
+}
+
+.center-container .delete-text p {
+    margin-top: 2rem;
+    color: #566573;
+}
+
+.folder-name{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    max-width: 40rem;
+    width: 100%;
+}
+
+.cancel-btn-container, .delete-btn-container{
+    max-width: 15rem;
+    width: 100%;
+    position: relative;
+}
+
+.delete-btn{
+    background: var(--red-color);
+    border: 1px solid var(--red-color);
+    border-radius: 0.5rem;
+    color: var(--white-color);
+}
+
+.cancel-btn{
+    background: var(--white-color);
+    border: 2px solid var(--white-gray-color);
+    border-radius: 0.5rem;
+    color: var(--dark-gray-color);
+}
+
+.btn {
+    max-width: 15rem;
+    width: 100%;
+    height: 4rem;
+    font-weight: 700;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.trash-can-2{
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-btn-container:hover .trash-can-2 {
+    left: 15%;
+}
+
+.delete-btn-container p {
+    opacity: 0;
+    transition: 0.2s ease-in;
+    letter-spacing: 0.1rem;
+}
+
+.delete-btn-container:hover p{
+    opacity: 1;
+}
+
+.x-icon-2{
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--dark-gray-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.cancel-btn-container:hover .x-icon-2 {
+    left: 15%;
+}
+
+.cancel-btn-container:hover p{
+    opacity: 1;
+}
+
+.cancel-btn-container p {
+    opacity: 0;
+    transition: 0.2s ease-in;
+    letter-spacing: 0.1rem;
+}
+
+.cancel-btn-container:hover p{
+    opacity: 1;
+}
+

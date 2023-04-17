@@ -25,7 +25,7 @@ import {
     faFileZipper,
     faFolderOpen,
     faVideo,
-    faPlay, faCameraRetro, faQuestion
+    faPlay, faCameraRetro, faQuestion, faXmark
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -64,7 +64,8 @@ export class FontAwesomeIconService {
             faVideo,
             faPlay,
             faCameraRetro,
-            faQuestion
+            faQuestion,
+            faXmark
         );
     }
 }
