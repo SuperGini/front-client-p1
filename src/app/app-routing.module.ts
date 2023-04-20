@@ -20,12 +20,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'test',
-    component: DeleteFolderPopupComponent
-
-  },
-
-  {
  //   path: 'mainPage', canActivate: [canActivateLogin],
     path: 'mainPage',
     component: MainPageComponent,

@@ -50,7 +50,7 @@
 .link{
   padding: 1rem 0 1rem 3rem;
   color: #868691;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   border-left: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-top: 6px solid transparent;
@@ -83,7 +83,7 @@
   color: #fdebd0;
   top: 10%;
   left: 79%;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .crete-folder-btn{
@@ -94,7 +94,7 @@
   color: var(--white-color);
   font-size: 1.3rem;
   font-weight: 700;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 

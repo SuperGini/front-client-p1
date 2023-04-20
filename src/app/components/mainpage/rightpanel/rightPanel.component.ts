@@ -40,7 +40,11 @@ export class RightPanelComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.username = this.securityContext.securityUser.value.username;
+    //todo: delete if statement when app is fully functional -> wrote if statement so i dont have null error
+    if(this.securityContext.securityUser.value != null){
+      this.username = this.securityContext.securityUser.value.username;
+    }
+
   }
 
 

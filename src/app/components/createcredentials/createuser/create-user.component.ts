@@ -65,10 +65,6 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
         this.router.navigate(['/login']);
     }
 
-    ngOnDestroy(): void {
-        this.errorSub.unsubscribe();
-    }
-
     validateStatus(httpStatus: number) : void {
         if(httpStatus === 201){
             this.successMessage = "User created!"
@@ -78,6 +74,10 @@ export class CreateUserComponent implements OnInit, Navigating, OnDestroy {
     private resetMessages(){
         this.errorMessage = null;
         this.successMessage = null;
+    }
+
+    ngOnDestroy(): void {
+        this.errorSub.unsubscribe();
     }
 
 }

@@ -1,5 +1,8 @@
 <div class="delete-container">
-    <fa-icon [icon]="['fas','circle-xmark']" class="x-icon"></fa-icon>
+    <fa-icon [icon]="['fas','circle-xmark']" (click)="closePopUp()"  class="x-icon"></fa-icon>
+    <div class="error-message">
+        <p *ngIf="errorMessage">{{errorMessage}}</p>
+    </div>
     <div class="center-container">
         <div class="delete-text">
             <div class="trash">
@@ -13,10 +16,10 @@
         <div class="btn-container">
             <div class="cancel-btn-container">
                 <fa-icon [icon]="['fas','xmark']" class="x-icon-2"></fa-icon>
-                <button class="btn cancel-btn"><p>Cancel</p></button>
+                <button class="btn cancel-btn" (click)="closePopUp()"><p>Cancel</p></button>
             </div>
             <div class="delete-btn-container">
-                <button class="btn delete-btn"><p>Delete</p></button>
+                <button class="btn delete-btn" (click)="deleteFolder();" ><p class="x">Delete</p></button>
                 <fa-icon [icon]="['fas','trash-can']" class="trash-can-2"></fa-icon>
             </div>
         </div>

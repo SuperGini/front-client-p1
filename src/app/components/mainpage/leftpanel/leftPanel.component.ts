@@ -1,10 +1,12 @@
-import {Component, inject, OnInit} from "@angular/core";
+import {Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CreateFolderPopupComponent} from "../../popup/createfolder/create-folder-popup.component";
 import {Flag, Flags, FolderArrays} from "../../../cach/cach";
 import {NgClass} from "@angular/common";
 import {FolderService} from "../../../services/gateway/folderService";
+import {DeleteFolderPopupComponent} from "../../popup/deletefolder/delete-folder-popup.component";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -19,21 +21,30 @@ import {FolderService} from "../../../services/gateway/folderService";
     ],
     standalone: true
 })
-export class LeftPanelComponent implements OnInit{
+export class LeftPanelComponent implements OnInit, OnDestroy{
+
+    private firstSubscription: Subscription;
+    private secondSubscription: Subscription;
 
     private matDialog = inject(MatDialog);
     private flag = inject(Flag);
     private folderService = inject(FolderService);
-    private folderArrays = inject(FolderArrays);
+
 
     activeLink: string
+    deleteLink: string;
 
 
     ngOnInit(): void {
         this.setHomeFlagAndGetAllFolders();
+        this.firstSubscription = this.flag.homeMyFoldersFlag
+                                        .subscribe(flag => this.activeLink = flag);
+        this.secondSubscription = this.flag.deleteFlag
+                                        .subscribe( delFlag => this.deleteLink = delFlag);
+
     }
 
-    openDialog() {
+    openCreateFolderDialog() {
         this.matDialog.open(CreateFolderPopupComponent, {
             height: '40rem',
             width: '70rem'
@@ -46,13 +57,16 @@ export class LeftPanelComponent implements OnInit{
 
     myFolders(){
         this.flag.homeMyFoldersFlag.next('myFolders');
-        this.activeLink = Flags.MY_FOLDERS;
         this.folderService.getUserFoldersWithPagination('434830067258757412', 0,6)
                           .subscribe();
     }
 
     delete() {
-        this.activeLink = Flags.DELETE;
+        this.flag.deleteFlag.next(Flags.DELETE);
+        this.matDialog.open(DeleteFolderPopupComponent, {
+            height: '40rem',
+            width:'70rem'
+        })
     }
 
     profile() {
@@ -61,9 +75,13 @@ export class LeftPanelComponent implements OnInit{
 
     private setHomeFlagAndGetAllFolders(){
         this.flag.homeMyFoldersFlag.next('home');
-        this.activeLink = Flags.HOME;
         this.folderService.getAllFoldersWithPagination(0, 6)
             .subscribe();
+    }
+
+    ngOnDestroy(): void {
+        this.firstSubscription.unsubscribe();
+        this.secondSubscription.unsubscribe();
     }
 
 

@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from "@angular/core";
+import {ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FolderService} from "../../../../services/gateway/folderService";
 import {FolderResponse} from "../../../../model/folder";
@@ -21,7 +21,7 @@ import {skipWhile, Subscription, take} from "rxjs";
         NgSwitch,
         NgSwitchCase,
     ],
-    standalone: true
+    standalone: true,
 })
 export class HomePanelComponent implements OnInit, OnDestroy {
 
@@ -133,12 +133,14 @@ export class HomePanelComponent implements OnInit, OnDestroy {
                 this.homePanelFolders = allFoldersArray
             });
     }
-
+        //TODO: Now is BehaviourSubject and not Subject
     private setPageOptionsFromSubject(): Subscription{
         return this.folderArrays.pageOptionsSubject.subscribe(x => {
-            this.pageIndex = x.pageIndex;
-            this.pageSize = x.pageSize;
-            this.length = x.length;
+            if(x != null){
+                this.pageIndex = x.pageIndex;
+                this.pageSize = x.pageSize;
+                this.length = x.length;
+            }
         })
     }
 

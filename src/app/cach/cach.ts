@@ -16,18 +16,20 @@ export class SecurityContext {
 @Injectable({providedIn: 'root'})
 export class ErrorMsg {
     errorMessage = new Subject<string>;
+    deleteFolderErrorMessage = new Subject<string>();
 }
 
 @Injectable({providedIn: 'root'})
 export class FolderArrays {
 
     allFoldersSubject = new Subject<Array<FolderResponse>>();
-    pageOptionsSubject = new Subject<PageOptions>();
+    pageOptionsSubject = new BehaviorSubject<PageOptions>(null);
 }
 
 @Injectable({providedIn: 'root'})
 export class Flag {
-    homeMyFoldersFlag = new BehaviorSubject<string>(null);
+    homeMyFoldersFlag = new BehaviorSubject<string>(undefined);
+    deleteFlag = new BehaviorSubject<string>(undefined)
 }
 
 

@@ -18,8 +18,8 @@
         </div>
       </li>
       <li>
-        <div class="link delete" (click)="delete()" [ngClass]="{'yyy': activeLink === 'delete'}">
-          <fa-icon [icon]="['fas','trash-can']" [ngClass]="{'red-color': activeLink === 'delete'}"></fa-icon>
+        <div class="link delete" (click)="delete()" [ngClass]="{'yyy': deleteLink === 'delete'}">
+          <fa-icon [icon]="['fas','trash-can']" [ngClass]="{'red-color': deleteLink === 'delete'}"></fa-icon>
           <a>Delete Folder</a>
         </div>
       </li>
@@ -37,6 +37,6 @@
 <!-- BottomContainer-->
   <div class="btn-container">
     <fa-icon [icon]="['fas','folder-plus']"></fa-icon>
-    <button class="crete-folder-btn" (click)="openDialog()" >Create Folder</button>
+    <button class="crete-folder-btn" (click)="openCreateFolderDialog()" >Create Folder</button>
   </div>
 </div>
