@@ -1,8 +1,9 @@
 import {FileHandle} from "./file-handle.model";
+import {FolderInfo} from "./folderInfo";
 
 export interface Image {
 
-  imageInfo: string;
+  folderInfo: FolderInfo,
   imageFile: FileHandle[];
 
 }

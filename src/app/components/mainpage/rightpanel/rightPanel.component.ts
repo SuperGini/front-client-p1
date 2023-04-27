@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, inject, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FolderInfoPanelComponent} from "./folderinfopanel/folderInfoPanel.component";
 import {PicturesPanelComponent} from "./picturespanel/picturesPanel.component";
@@ -7,7 +7,7 @@ import {FileHandle} from "../../../model/file-handle.model";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ImageService} from "../../../services/image.service";
 import {Image} from "../../../model/image";
-import {SecurityContext, SecurityUser} from "../../../cach/cach";
+import {FolderArrays, SecurityContext} from "../../../cach/cach";
 
 @Component({
   selector: "app-right-panel",
@@ -23,11 +23,12 @@ import {SecurityContext, SecurityUser} from "../../../cach/cach";
 })
 export class RightPanelComponent implements OnInit{
 
+  folderArray = inject(FolderArrays);
 
   username:string = 'username';
 
   image: Image = {
-    imageInfo: '',
+    folderInfo: null,
     imageFile: []
   }
 
@@ -48,22 +49,28 @@ export class RightPanelComponent implements OnInit{
   }
 
 
-
   onFileSelected(event: Event){
     console.log(event);
     const target = event.target as HTMLInputElement;
-    if(target.files){
-      const file = target.files[0];
+    if (target.files) {
+      this.image.imageFile = [];
 
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sanitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        )
-      }
+      const fileArray = Array.from(target.files);
 
-      this.image.imageFile.push(fileHandle);
-      this.image.imageInfo = "PLM merge";
+      fileArray.forEach(file => {
+        const fileHandle: FileHandle = {
+          file: file,
+          url: this.sanitizer.bypassSecurityTrustUrl(
+              window.URL.createObjectURL(file)
+          )
+        }
+        this.image.imageFile.push(fileHandle);
+      })
+
+      const folderInfo = this.folderArray.selectedFolder.value
+      console.log(`Folder selected id: -> ${folderInfo.folderId} and folderName: ${folderInfo.folderName}`);
+
+      this.image.folderInfo = folderInfo;
 
     }
   }
@@ -73,27 +80,28 @@ export class RightPanelComponent implements OnInit{
     const uploadImgData = this.prepareFormData(this.image);
     this.imageService.saveImage(uploadImgData)
       .subscribe((response) => {
-        console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        console.log("image saved!!!!")
       }
     )
-
   }
 
   prepareFormData(image: Image): FormData {
     const formData = new FormData();
+
     formData.append(
-      'imageInfo',
-      new Blob([JSON.stringify(image)], {type: 'application/json'} )
+      'folderInfo',
+      new Blob([JSON.stringify(image.folderInfo)], {type: 'application/json'} )
     );
 
-    for (const element of image.imageFile) {
-      formData.append(
-        'imageFile',
-        element.file,
-        element.file.name
-      );
-    }
+    image.imageFile.forEach(element =>
+        formData.append(
+            'imageFile',
+            element.file,
+            element.file.name
+        )
+    )
     return formData;
+
   }
 
 }

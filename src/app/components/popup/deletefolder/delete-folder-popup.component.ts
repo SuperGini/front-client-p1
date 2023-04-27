@@ -57,7 +57,8 @@ export class DeleteFolderPopupComponent implements OnInit, OnDestroy{
                                     .trim();
 
         if(this.isNotANumber(folderId)){
-            throw Error('Invalid folder Id to delete -> is not a number!!');
+            this.error.deleteFolderErrorMessage.next('Select a folder first to delete it!')
+            throw Error(`Invalid folder Id to delete: ${folderId} -> is not a number!!`);
         }
 
         this.folderService.deleteFolder(folderId, userId)

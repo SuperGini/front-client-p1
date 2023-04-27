@@ -35,12 +35,4 @@ export interface PageOptions {
 
 
 
-// export enum FolderType {
-//     VIDEO = 'video',
-//     AUDIO = 'audio',
-//     FILE = 'file',
-//     OTHER = 'other',
-//     PICTURE = 'picture'
-// }
-
 

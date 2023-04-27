@@ -7,6 +7,7 @@ import {NgClass} from "@angular/common";
 import {FolderService} from "../../../services/gateway/folderService";
 import {DeleteFolderPopupComponent} from "../../popup/deletefolder/delete-folder-popup.component";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -23,12 +24,15 @@ import {Subscription} from "rxjs";
 })
 export class LeftPanelComponent implements OnInit, OnDestroy{
 
+    private REGEX = /^[0-9]+$/;
+
     private firstSubscription: Subscription;
     private secondSubscription: Subscription;
 
     private matDialog = inject(MatDialog);
     private flag = inject(Flag);
     private folderService = inject(FolderService);
+    private router = inject(Router);
 
 
     activeLink: string
@@ -62,11 +66,18 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
     }
 
     delete() {
-        this.flag.deleteFlag.next(Flags.DELETE);
-        this.matDialog.open(DeleteFolderPopupComponent, {
-            height: '40rem',
-            width:'70rem'
-        })
+        const folderId = this.router.url
+                                            .split("/")
+                                            .pop()
+                                            .trim();
+
+        if(this.isAnumber(folderId)){
+            this.flag.deleteFlag.next(Flags.DELETE);
+            this.matDialog.open(DeleteFolderPopupComponent, {
+                height: '40rem',
+                width:'70rem'
+            })
+        }
     }
 
     profile() {
@@ -77,6 +88,10 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
         this.flag.homeMyFoldersFlag.next('home');
         this.folderService.getAllFoldersWithPagination(0, 6)
             .subscribe();
+    }
+
+    private isAnumber(value): boolean {
+        return this.REGEX.test(value);
     }
 
     ngOnDestroy(): void {

@@ -10,7 +10,7 @@ import {PicturesPanelComponent} from "./components/mainpage/rightpanel/picturesp
 
 import {CreateFolderPopupComponent} from "./components/popup/createfolder/create-folder-popup.component";
 import {canActivateLogin} from "./guards/AuthGuardService";
-import {DeleteFolderPopupComponent} from "./components/popup/deletefolder/delete-folder-popup.component";
+
 
 
 const routes: Routes = [

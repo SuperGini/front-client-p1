@@ -7,6 +7,7 @@ import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Flag, Flags, FolderArrays} from "../../../../cach/cach";
 import {skipWhile, Subscription, take} from "rxjs";
+import {FolderInfo} from "../../../../model/folderInfo";
 
 @Component({
     selector: "app-home-panel",
@@ -76,11 +77,18 @@ export class HomePanelComponent implements OnInit, OnDestroy {
      *
      * I use the i parameter here to set active row when I click the row
      * */
-    getFolderInfo(index: string): void {
+    getFolderInfo(index: string, folderName: string): void {
         console.log(`Selected folder id: ${index}`);
-        this.router.navigate(['info', index], {relativeTo: this.activeRoute});
+        this.router.navigate(['pictures', index], {relativeTo: this.activeRoute});
 
         this.htmlIndex = index;
+
+        const folderInfo: FolderInfo = {
+            folderId: index,
+            folderName: folderName
+        }
+
+        this.folderArrays.selectedFolder.next(folderInfo);
 
     }
 

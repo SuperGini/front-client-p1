@@ -1,6 +1,7 @@
 import {BehaviorSubject, Subject} from "rxjs";
 import {Injectable} from "@angular/core";
 import {FolderResponse, PageOptions} from "../model/folder";
+import {FolderInfo} from "../model/folderInfo";
 
 export class SecurityUser {
 
@@ -24,6 +25,7 @@ export class FolderArrays {
 
     allFoldersSubject = new Subject<Array<FolderResponse>>();
     pageOptionsSubject = new BehaviorSubject<PageOptions>(null);
+    selectedFolder = new BehaviorSubject<FolderInfo>(null);
 }
 
 @Injectable({providedIn: 'root'})
