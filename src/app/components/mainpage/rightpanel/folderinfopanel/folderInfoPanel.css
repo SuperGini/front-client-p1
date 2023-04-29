@@ -52,3 +52,70 @@
   background: var(--white-color);
   border-radius: 0.4rem;
 }
+
+
+.folder-info-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--dark-gray-color);
+}
+
+.folder-info-container h4:nth-child(1) {
+  align-self: flex-start;
+  margin-left: 3rem;
+  font-size: 1.8rem;
+}
+.circle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 12rem;
+  height: 12rem;
+  background: var(--white-color);
+  border-radius: 10rem;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 2rem 0 1rem 0;
+  border: 0.5rem solid var(--green-color);
+}
+
+.circle p {
+  display: flex;
+  align-items: center;
+}
+
+.circle span {
+  font-size: 2rem;
+  margin-left: 0.3rem;
+  color: #f39c12;
+}
+
+.used{
+  font-size: 1.5rem;
+  color: #6b7885;
+}
+
+.gb {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6b7885;
+}
+
+.info-about-folder{
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.storage-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--white-gray-color);
+}

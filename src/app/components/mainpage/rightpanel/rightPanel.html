@@ -7,40 +7,6 @@
     </div>
   </div>
 
-  <div class="folder-info-container">
-    <h4 class="storage">Storage</h4>
-    <div class="storage-volume">
-      <div class="wrapper-circle"></div>
-      <div class="circle">
-        <p class="percent">75<span>%</span></p>
-        <p class="used">Used</p>
-      </div>
-      <p class="gb">1.5 GB of 2 GB used</p>
-    </div>
-  </div>
-
   <router-outlet></router-outlet>
-
-  <div class="upload-container">
-    <div class="text-1">
-      <h4>Import new files</h4>
-      <div class="text-2"></div>
-      <p>Upload new files here</p>
-      <p>Drag and drop files here and</p>
-      <p>assign to right folder</p>
-    </div>
-
-    <div class="upload-area">
-      <div class="upload-icon-text">
-        <fa-icon [icon]="['fas','cloud-arrow-down']"></fa-icon>
-        <p>Upload files</p>
-<!--        multiple -> means that we can select multiple files at once-->
-        <input type="file" multiple value="select" #selectFile
-        (change)="onFileSelected($event)"
-        >
-      </div>
-    </div>
-    <button (click)="addImage()">Submit image</button>
-  </div>
 
 </div>

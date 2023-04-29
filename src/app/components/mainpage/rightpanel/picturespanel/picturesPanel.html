@@ -1,21 +1,57 @@
 <div class="pictures-container">
-  <div class="pictures-wrapper">
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-    <div class="picture-1"></div>
-  </div>
-  <div class="page-number">
-    <fa-icon [icon]="['fas','angle-left']"></fa-icon>
-    <p>5.6.7
-      <fa-icon [icon]="['fas','ellipsis']"></fa-icon>
-    </p>
-    <fa-icon [icon]="['fas','angle-right']"></fa-icon>
-  </div>
+    <div class="pictures-wrapper">
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+        <div class="picture-1"></div>
+    </div>
+    <div class="page-number">
+        <fa-icon [icon]="['fas','angle-left']"></fa-icon>
+        <p>5.6.7
+            <fa-icon [icon]="['fas','ellipsis']"></fa-icon>
+        </p>
+        <fa-icon [icon]="['fas','angle-right']"></fa-icon>
+    </div>
+
+    <div class="wrapper">
+        <div class="prepare-upload-file-container">
+            <div class="upload-file" *ngFor="let file of image.imageFile; let i = index"
+                 (click)="removeImage(i)"
+                 (mouseover)="onMouseOver()" [ngStyle] = "{'cursor': mouseCursor}"
+            >
+                <img [src]="file.url" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="upload-container">
+        <div class="text-1">
+            <h4>Import new files</h4>
+            <div class="text-2"></div>
+            <p>Drag and drop files here</p>
+        </div>
+
+        <div class="upload-area"  appDragdrop (images)="dragDropFileSelected($event)">
+            <div class="upload-icon-text">
+                <fa-icon [icon]="['fas','cloud-arrow-down']"></fa-icon>
+                <p>Upload <span (click)="selectFile.click()" class="browse-files">files</span></p>
+                <!--        multiple -> means that we can select multiple files at once-->
+                <input type="file" multiple value="select" #selectFile class="file-input"
+                       (change)="onFileSelected($event)"
+                >
+                <div class="last-text">
+                    <p *ngIf="nrOfFiles" >{{nrOfFiles}} files uploaded</p>
+                </div>
+
+            </div>
+        </div>
+        <button (click)="addImage()" class="upload-btn">Submit image</button>
+    </div>
 
 </div>
