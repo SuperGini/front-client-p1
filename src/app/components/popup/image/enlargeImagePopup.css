@@ -1,0 +1,11 @@
+.picture-container{
+    display: flex;
+    max-width: 70rem;
+    max-height: 40rem;
+    background: white;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}

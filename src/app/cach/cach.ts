@@ -2,6 +2,8 @@ import {BehaviorSubject, Subject} from "rxjs";
 import {Injectable} from "@angular/core";
 import {FolderResponse, PageOptions} from "../model/folder";
 import {FolderInfo} from "../model/folderInfo";
+import {FileResponse} from "../model/fileResponse";
+import {FileResponsePagination} from "../model/fileResponsePagination";
 
 export class SecurityUser {
 
@@ -32,6 +34,17 @@ export class FolderArrays {
 export class Flag {
     homeMyFoldersFlag = new BehaviorSubject<string>(undefined);
     deleteFlag = new BehaviorSubject<string>(undefined)
+}
+
+
+@Injectable({providedIn: 'root'})
+export class FileResp {
+    fileResponse = new Subject<FileResponsePagination>();
+}
+
+@Injectable({providedIn: "root"})
+export class PaginatorPageIndex {
+    resetPageIndex = new Subject<boolean>();
 }
 
 

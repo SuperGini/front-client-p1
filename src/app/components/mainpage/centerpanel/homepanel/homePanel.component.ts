@@ -1,13 +1,14 @@
-import {ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit} from "@angular/core";
+import {Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {FolderService} from "../../../../services/gateway/folderService";
 import {FolderResponse} from "../../../../model/folder";
 import {NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Flag, Flags, FolderArrays} from "../../../../cach/cach";
+import {Flag, Flags, FolderArrays, PaginatorPageIndex} from "../../../../cach/cach";
 import {skipWhile, Subscription, take} from "rxjs";
 import {FolderInfo} from "../../../../model/folderInfo";
+import {FileService} from "../../../../services/gateway/fileService";
 
 @Component({
     selector: "app-home-panel",
@@ -37,6 +38,8 @@ export class HomePanelComponent implements OnInit, OnDestroy {
     private activeRoute = inject(ActivatedRoute);
     private folderArrays = inject(FolderArrays);
     private flag = inject(Flag);
+    private fileService = inject(FileService);
+    private paginatorPageIndex = inject(PaginatorPageIndex);
 
     htmlIndex: string;
     length: number;
@@ -66,7 +69,7 @@ export class HomePanelComponent implements OnInit, OnDestroy {
         this.length = e.length;
         this.pageSize = e.pageSize;
         this.pageIndex = e.pageIndex;
-        this.getFolders(this.homeMyFoldersFlag);
+        this.getFolders(this.homeMyFoldersFlag, this.pageIndex, this.pageSize);
         console.log(this.homePanelFolders);
     }
 
@@ -77,29 +80,33 @@ export class HomePanelComponent implements OnInit, OnDestroy {
      *
      * I use the i parameter here to set active row when I click the row
      * */
-    getFolderInfo(index: string, folderName: string): void {
-        console.log(`Selected folder id: ${index}`);
-        this.router.navigate(['pictures', index], {relativeTo: this.activeRoute});
+    getFolderPictures(folderId: string, folderName: string): void {
+        console.log(`Selected folder id: ${folderId}`);
+        this.router.navigate(['pictures', folderId], {relativeTo: this.activeRoute});
 
-        this.htmlIndex = index;
+        this.htmlIndex = folderId;
 
         const folderInfo: FolderInfo = {
-            folderId: index,
+            folderId: folderId,
             folderName: folderName
         }
 
+        this.paginatorPageIndex.resetPageIndex.next(true);
+
         this.folderArrays.selectedFolder.next(folderInfo);
+
+        this.fileService.getFolderFilesWithPagination(folderId, 0, 6).subscribe();
 
     }
 
-    private getFolders(activeLink: string) {
+    private getFolders(activeLink: string, pageIndex: number, pageSize: number) {
         switch (activeLink) {
             case Flags.HOME:
-                this.getAllFoldersWithPagination( this.pageIndex, this.pageSize);
+                this.getAllFoldersWithPagination(pageIndex, pageSize);
                 this.secondSubscription = this.setAllFoldersFromSubject();
                 break;
             case Flags.MY_FOLDERS:
-                this.getUserFoldersWithPagination( this.pageIndex, this.pageSize);
+                this.getUserFoldersWithPagination(pageIndex, pageSize);
                 this.thirdSubscription = this.setAllFoldersFromSubject();
                 break;
         }
@@ -121,7 +128,7 @@ export class HomePanelComponent implements OnInit, OnDestroy {
     }
 
     //no need to unsubscribe here since the take(1) function will automatically unsubscribe
-    private setFlagFromSubject(){
+    private setFlagFromSubject() {
         this.flag.homeMyFoldersFlag
             .pipe(
                 skipWhile(x => x === null || x === undefined),
@@ -141,10 +148,11 @@ export class HomePanelComponent implements OnInit, OnDestroy {
                 this.homePanelFolders = allFoldersArray
             });
     }
-        //TODO: Now is BehaviourSubject and not Subject
-    private setPageOptionsFromSubject(): Subscription{
+
+    //TODO: Now is BehaviourSubject and not Subject
+    private setPageOptionsFromSubject(): Subscription {
         return this.folderArrays.pageOptionsSubject.subscribe(x => {
-            if(x != null){
+            if (x != null) {
                 this.pageIndex = x.pageIndex;
                 this.pageSize = x.pageSize;
                 this.length = x.length;

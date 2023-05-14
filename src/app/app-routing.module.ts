@@ -8,8 +8,8 @@ import {LoginComponent} from "./components/createcredentials/login/login.compone
 import {FolderInfoPanelComponent} from "./components/mainpage/rightpanel/folderinfopanel/folderInfoPanel.component";
 import {PicturesPanelComponent} from "./components/mainpage/rightpanel/picturespanel/picturesPanel.component";
 
-import {CreateFolderPopupComponent} from "./components/popup/createfolder/create-folder-popup.component";
 import {canActivateLogin} from "./guards/AuthGuardService";
+import {EnlargeImagePopupComponent} from "./components/popup/image/enlarge-image-popup.component";
 
 
 
@@ -35,10 +35,10 @@ const routes: Routes = [
     ]
   },
 
-  {
-    path: 'test',
-    component: CreateFolderPopupComponent
-  },
+  // {
+  //   path: 'test',
+  //   component: EnlargeImagePopupComponent
+  // },
 
   {
     path: '',

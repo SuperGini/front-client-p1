@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    max-height: 3rem;
+    height: 100%;
+}
+
+.page-number{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--dark-gray-color);
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    border: transparent;
+    background: transparent;
+}
+
+button:hover{
+    background: var(--dark-gray-color);
+    cursor: pointer;
+}
+
+fa-icon {
+    color: var(--orange-yellow-color);
+
+}

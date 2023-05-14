@@ -72,7 +72,7 @@
 
 <!---------------TABLE CONTAINER--------------------------------------->
       <div class="table-body" *ngFor="let folder of homePanelFolders" >
-        <ul class="table-body-row" (click)="getFolderInfo(folder.id, folder.projectName)" [ngClass]="{'active-row': folder.id === htmlIndex}">
+        <ul class="table-body-row" (click)="getFolderPictures(folder.id, folder.projectName)" [ngClass]="{'active-row': folder.id === htmlIndex}">
 
             <li>
               <div class="table-body-1">

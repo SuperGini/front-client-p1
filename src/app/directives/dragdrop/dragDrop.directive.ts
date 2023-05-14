@@ -64,8 +64,7 @@ export class DragDropDirective {
                       window.URL.createObjectURL(file))
               }
               image.imageFile.push(fileHandle);
-
-              this.images.emit(image);
            });
+        this.images.emit(image);
     }
 }

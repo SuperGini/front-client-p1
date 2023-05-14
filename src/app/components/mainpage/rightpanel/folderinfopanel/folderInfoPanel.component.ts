@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class FolderInfoPanelComponent implements OnInit{
 
-
+//not implemented
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
 

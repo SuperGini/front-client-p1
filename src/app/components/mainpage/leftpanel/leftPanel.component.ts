@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CreateFolderPopupComponent} from "../../popup/createfolder/create-folder-popup.component";
-import {Flag, Flags, FolderArrays} from "../../../cach/cach";
+import {Flag, Flags} from "../../../cach/cach";
 import {NgClass} from "@angular/common";
 import {FolderService} from "../../../services/gateway/folderService";
 import {DeleteFolderPopupComponent} from "../../popup/deletefolder/delete-folder-popup.component";
@@ -22,7 +22,7 @@ import {Router} from "@angular/router";
     ],
     standalone: true
 })
-export class LeftPanelComponent implements OnInit, OnDestroy{
+export class LeftPanelComponent implements OnInit, OnDestroy {
 
     private REGEX = /^[0-9]+$/;
 
@@ -42,9 +42,9 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
     ngOnInit(): void {
         this.setHomeFlagAndGetAllFolders();
         this.firstSubscription = this.flag.homeMyFoldersFlag
-                                        .subscribe(flag => this.activeLink = flag);
+            .subscribe(flag => this.activeLink = flag);
         this.secondSubscription = this.flag.deleteFlag
-                                        .subscribe( delFlag => this.deleteLink = delFlag);
+            .subscribe(delFlag => this.deleteLink = delFlag);
 
     }
 
@@ -55,27 +55,27 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
         })
     }
 
-    home(){
+    home() {
         this.setHomeFlagAndGetAllFolders();
     }
 
-    myFolders(){
+    myFolders() {
         this.flag.homeMyFoldersFlag.next('myFolders');
-        this.folderService.getUserFoldersWithPagination('434830067258757412', 0,6)
-                          .subscribe();
+        this.folderService.getUserFoldersWithPagination('434830067258757412', 0, 6)
+            .subscribe();
     }
 
     delete() {
         const folderId = this.router.url
-                                            .split("/")
-                                            .pop()
-                                            .trim();
+            .split("/")
+            .pop()
+            .trim();
 
-        if(this.isAnumber(folderId)){
+        if (this.isAnumber(folderId)) {
             this.flag.deleteFlag.next(Flags.DELETE);
             this.matDialog.open(DeleteFolderPopupComponent, {
                 height: '40rem',
-                width:'70rem'
+                width: '70rem'
             })
         }
     }
@@ -84,7 +84,7 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
         this.activeLink = Flags.PROFILE;
     }
 
-    private setHomeFlagAndGetAllFolders(){
+    private setHomeFlagAndGetAllFolders() {
         this.flag.homeMyFoldersFlag.next('home');
         this.folderService.getAllFoldersWithPagination(0, 6)
             .subscribe();
@@ -98,7 +98,4 @@ export class LeftPanelComponent implements OnInit, OnDestroy{
         this.firstSubscription.unsubscribe();
         this.secondSubscription.unsubscribe();
     }
-
-
-
 }
