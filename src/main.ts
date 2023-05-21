@@ -8,6 +8,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AppModule} from "./app/app.module";
 import {MatDialogModule} from "@angular/material/dialog";
+import {StoreModule} from "@ngrx/store";
+import {usernameReducer} from "./app/reducer/store/user-reducer";
 
 /**
  * since I'm using standalone components all the services need to be declared here so the can be used
@@ -24,6 +26,7 @@ bootstrapApplication(AppComponent, {
             BrowserAnimationsModule,
             MatIconModule,
             HttpClientModule,
+            StoreModule.forRoot({addLoggedUser: usernameReducer}),
             BrowserModule,
             AppModule,
             FontAwesomeModule), // -> https://www.npmjs.com/package/@fortawesome/angular-fontawesome -> install and shit

@@ -1,18 +1,28 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {User} from "../../model/user";
 import {APPLICATION_JSON_VALUE, CONTENT_TYPE, POST_USER_CREATE, POST_USER_LOGIN} from "../../constants/app.constants";
-import {BehaviorSubject, catchError, Observable, Subject, tap, throwError} from "rxjs";
+import {catchError, Observable, tap, throwError} from "rxjs";
 import {UserLogin} from "../../model/userLogin";
 import {ErrorMsg, SecurityContext, SecurityUser} from "../../cach/cach";
+import {Store} from "@ngrx/store";
 
 
 @Injectable({providedIn: 'root'})
-export class UserService {
+export class UserService implements OnInit {
 
-   // error = new Subject<string>;
+    user: Observable<{ securityUser: SecurityUser }>;
 
-    constructor(private httpClient: HttpClient, private securityContext: SecurityContext, private error: ErrorMsg) {
+    constructor(private httpClient: HttpClient,
+                private securityContext: SecurityContext,
+                private error: ErrorMsg,
+                private store: Store<{ addLoggedUser: { securityUser: SecurityUser } }>
+    ) {
+    }
+
+    ngOnInit(): void {
+        this.user = this.store.select('addLoggedUser');
+        console.log(this.user)
     }
 
 
@@ -54,6 +64,7 @@ export class UserService {
                     console.log(`User logged is: ${securityUser.id}`);
 
                     this.securityContext.securityUser.next(securityUser);
+                    localStorage.setItem('username', response.body.username);
                 })
             );
     }
