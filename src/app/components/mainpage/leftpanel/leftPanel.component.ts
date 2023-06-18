@@ -27,7 +27,7 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
     private REGEX = /^[0-9]+$/;
 
     private firstSubscription: Subscription;
-    private secondSubscription: Subscription;
+    private secondSubscription2: Subscription;
 
     private matDialog = inject(MatDialog);
     private flag = inject(Flag);
@@ -43,7 +43,7 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
         this.setHomeFlagAndGetAllFolders();
         this.firstSubscription = this.flag.homeMyFoldersFlag
             .subscribe(flag => this.activeLink = flag);
-        this.secondSubscription = this.flag.deleteFlag
+        this.secondSubscription2 = this.flag.deleteFlag
             .subscribe(delFlag => this.deleteLink = delFlag);
 
     }
@@ -96,6 +96,6 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.firstSubscription.unsubscribe();
-        this.secondSubscription.unsubscribe();
+        this.secondSubscription2.unsubscribe();
     }
 }

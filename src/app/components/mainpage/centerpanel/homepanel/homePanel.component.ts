@@ -162,9 +162,9 @@ export class HomePanelComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.firstSubscription.unsubscribe();
-        this.secondSubscription.unsubscribe();
-        this.thirdSubscription.unsubscribe();
-        this.forthSubscription.unsubscribe();
+        this.secondSubscription?.unsubscribe(); //-? i used ? so i dont get an undefined here. If secondSubscription is undefined then unsubscribe() will not be called
+        this.thirdSubscription?.unsubscribe();
+        this.forthSubscription?.unsubscribe();
     }
 
 }

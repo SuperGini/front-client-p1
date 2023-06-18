@@ -1,6 +1,5 @@
 import {inject, Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {FileResponse} from "../../model/fileResponse";
 import {APPLICATION_JSON_VALUE, CONTENT_TYPE, GET_FILES} from "../../constants/app.constants";
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {ErrorMsg, FileResp} from "../../cach/cach";

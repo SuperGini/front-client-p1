@@ -6,7 +6,6 @@ import {UserService} from "../../../services/gateway/userService";
 import {UserLogin} from "../../../model/userLogin";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
-import {User} from "../../../model/user";
 import {ErrorMsg} from "../../../cach/cach";
 
 @Component({
@@ -55,21 +54,21 @@ export class LoginComponent implements OnInit, OnDestroy, Navigating {
             password: password
         }
         this.clientService.loginUser(userLogin)
-                          .subscribe(response => {
-                              console.log(` Login status: ${response.status}`);
-                              this.toMainPage(response.status);
-                          });
+            .subscribe(response => {
+                console.log(` Login status: ${response.status}`);
+                this.toMainPage(response.status);
+            });
 
-    }
-
-    ngOnDestroy(): void {
-        this.errorSub.unsubscribe();
     }
 
     toMainPage(status: number): void{
       if (status === 200){
         this.router.navigate(['/mainPage']);
       }
+    }
+
+    ngOnDestroy(): void {
+        this.errorSub.unsubscribe();
     }
 
 }

@@ -41,7 +41,7 @@ export class RightPanelComponent implements OnInit{
 
     }
 
-    this.username = localStorage.getItem('username');
+    this.username = sessionStorage.getItem('username');
 
   }
 }

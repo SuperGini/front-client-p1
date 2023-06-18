@@ -64,7 +64,7 @@ export class UserService implements OnInit {
                     console.log(`User logged is: ${securityUser.id}`);
 
                     this.securityContext.securityUser.next(securityUser);
-                    localStorage.setItem('username', response.body.username);
+                    sessionStorage.setItem('username', response.body.username);
                 })
             );
     }
