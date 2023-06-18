@@ -1,7 +1,5 @@
 import {SecurityUser} from "../../cach/cach";
 import {ADD_USER, AddUser} from "./user-actions";
-import {ActionReducer} from "@ngrx/store";
-import {localStorageSync} from "ngrx-store-localstorage";
 
 const initialUserState = {
     securityUser: new SecurityUser('', '', 'gigel')
@@ -9,14 +7,14 @@ const initialUserState = {
 
 
 export function usernameReducer(state = initialUserState, action: AddUser) {
-   switch (action.type) {
+    switch (action.type) {
         case ADD_USER:
             return {
                 state,
                 securityUser: action.loggedUser
             };
         default:
-             return state;
+            return state;
     }
 }
 

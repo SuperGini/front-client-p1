@@ -12,9 +12,7 @@ export class LogoutComponent {
   private router = inject(Router);
 
   logoutUser() {
+    localStorage.removeItem('username');
     this.router.navigate(['../../login']);
-    sessionStorage.removeItem('username');
-
-
   }
 }
