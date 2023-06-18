@@ -65,6 +65,7 @@ export class UserService implements OnInit {
 
                     this.securityContext.securityUser.next(securityUser);
                     localStorage.setItem('username', response.body.username);
+                    localStorage.setItem('userId', response.body.id);
                 })
             );
     }

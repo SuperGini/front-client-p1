@@ -32,5 +32,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.removeItem('username');
+    localStorage.removeItem('userId');
   }
 }

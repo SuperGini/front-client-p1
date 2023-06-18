@@ -60,8 +60,9 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
     }
 
     myFolders() {
+        const userId = localStorage.getItem('userId');
         this.flag.homeMyFoldersFlag.next('myFolders');
-        this.folderService.getUserFoldersWithPagination('434830067258757412', 0, 6)
+        this.folderService.getUserFoldersWithPagination(userId, 0, 6)
             .subscribe();
     }
 

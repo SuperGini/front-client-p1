@@ -113,7 +113,8 @@ export class HomePanelComponent implements OnInit, OnDestroy {
     }
 
     private getUserFoldersWithPagination(pageIndex: number, pageSize: number): void {
-        this.folderService.getUserFoldersWithPagination('434830067258757412', pageIndex, pageSize)
+        const userId = localStorage.getItem('userId');
+        this.folderService.getUserFoldersWithPagination(userId, pageIndex, pageSize)
             .subscribe(response => {
                 console.log(response);
                 this.homePanelFolders = response.folderResponses;
