@@ -29,7 +29,7 @@ const routes: Routes = [
         component: FolderInfoPanelComponent
       },
       {
-        path: 'pictures/:id',
+        path: 'pictures/:folderName/:id',
         component: PicturesPanelComponent
       },
     ]

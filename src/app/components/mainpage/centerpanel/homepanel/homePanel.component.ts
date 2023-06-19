@@ -82,7 +82,7 @@ export class HomePanelComponent implements OnInit, OnDestroy {
      * */
     getFolderPictures(folderId: string, folderName: string): void {
         console.log(`Selected folder id: ${folderId}`);
-        this.router.navigate(['pictures', folderId], {relativeTo: this.activeRoute});
+        this.router.navigate(['pictures', folderName, folderId], {relativeTo: this.activeRoute});
 
         this.htmlIndex = folderId;
 

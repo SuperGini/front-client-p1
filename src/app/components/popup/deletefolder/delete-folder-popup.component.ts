@@ -4,7 +4,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {MatRippleModule} from "@angular/material/core";
 import {Router} from "@angular/router";
 import {FolderService} from "../../../services/gateway/folderService";
-import {ErrorMsg, Flag, SecurityContext} from "../../../cach/cach";
+import {ErrorMsg, Flag, FolderArrays, SecurityContext} from "../../../cach/cach";
 import {Subscription} from "rxjs";
 import {NgIf} from "@angular/common";
 
@@ -21,6 +21,7 @@ import {NgIf} from "@angular/common";
 })
 export class DeleteFolderPopupComponent implements OnInit, OnDestroy{
 
+    folderName: string = '';
     errorMessage: string;
 
     private REGEX = /^[0-9]+$/;
@@ -32,10 +33,11 @@ export class DeleteFolderPopupComponent implements OnInit, OnDestroy{
     private folderService = inject(FolderService);
     private securityContext = inject(SecurityContext);
     private error = inject(ErrorMsg);
-    private  flag = inject(Flag);
-
+    private flag = inject(Flag);
+    private folderArray = inject(FolderArrays);
 
     ngOnInit(): void {
+        this.folderName = this.folderArray.selectedFolder.value.folderName;
         this.firstSub = this.error.deleteFolderErrorMessage
                                     .subscribe(error => this.errorMessage = error);
         this.secondSub = this.matDialogRef.beforeClosed()
@@ -50,7 +52,7 @@ export class DeleteFolderPopupComponent implements OnInit, OnDestroy{
 
     deleteFolder(){
         console.log(this.router.url);
-        const userId = this.securityContext.securityUser.value.id
+        const userId = this.securityContext.securityUser.value.id;
         const folderId = this.router.url
                                     .split("/")
                                     .pop()

@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy, OnInit} from "@angular/core";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {CreateFolderPopupComponent} from "../../popup/createfolder/create-folder-popup.component";
-import {Flag, Flags} from "../../../cach/cach";
+import {Flag, Flags, FolderArrays} from "../../../cach/cach";
 import {NgClass} from "@angular/common";
 import {FolderService} from "../../../services/gateway/folderService";
 import {DeleteFolderPopupComponent} from "../../popup/deletefolder/delete-folder-popup.component";
@@ -33,6 +33,7 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
     private flag = inject(Flag);
     private folderService = inject(FolderService);
     private router = inject(Router);
+    private folderArray = inject(FolderArrays);
 
 
     activeLink: string
@@ -78,6 +79,8 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
                 height: '40rem',
                 width: '70rem'
             })
+        } else {
+            throw new Error(`${folderId} is not a number`);
         }
     }
 
