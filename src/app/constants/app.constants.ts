@@ -1,7 +1,7 @@
 const baseUrl = 'https://logic-core-p1-production.up.railway.app';
 
 export const POST_USER_CREATE = `${baseUrl}/v1/user`;
-export const POST_USER_LOGIN = `${baseUrl}/login`;
+export const POST_USER_LOGIN = `${baseUrl}/v1/user/login`;
 
 export const POST_CREATE_FOLDER = `${baseUrl}/v1/folder`;
 export const GET_FOLDERS_PAGE = `${baseUrl}/v1/folders`
