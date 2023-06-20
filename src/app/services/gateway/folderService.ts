@@ -129,7 +129,7 @@ export class FolderService {
                     console.log(flag + ` <----------------this is the flag`)
 
                     if (Flags.MY_FOLDERS === flag) {
-                        return this.getUserFoldersWithPagination('434830067258757412', pageIndex, pageSize);
+                        return this.getUserFoldersWithPagination(localStorage.getItem('userId'), pageIndex, pageSize);
                     }
 
                     return this.getAllFoldersWithPagination(pageIndex, pageSize);
