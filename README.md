@@ -2,7 +2,7 @@
 <hr>
 
 1. What does this microservice do:
-    - is a front-end interface for a file management app that makes http requests to a back end microservice -> [logic-core-p1](https://github.com/SuperGini/logic-core-p1) created with spring boot 3
+    - is a front-end interface for a file management app that makes http requests to a back-end microservice -> [logic-core-p1](https://github.com/SuperGini/logic-core-p1) created with spring boot 3
 
 2. Technologies use to create this project:
     - angular 15 - with standalone components
